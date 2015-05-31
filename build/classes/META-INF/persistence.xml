@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="R-C_Unicor_LoricaPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>RC_Unicor_Lorica_Entity.InformacionBasica</class>
+    <class>RC_Unicor_Lorica_Entity.Programa</class>
+    <class>RC_Unicor_Lorica_Entity.Universidad</class>
+    <class>RC_Unicor_Lorica_Entity.Horario</class>
+    <class>RC_Unicor_Lorica_Entity.Docente</class>
+    <class>RC_Unicor_Lorica_Entity.InformacionDeSeguridad</class>
+    <class>RC_Unicor_Lorica_Entity.UtensiliosDeClase</class>
+    <class>RC_Unicor_Lorica_Entity.Estudiante</class>
+    <class>RC_Unicor_Lorica_Entity.Dinamizador</class>
+    <class>RC_Unicor_Lorica_Entity.Facultad</class>
+    <class>RC_Unicor_Lorica_Entity.Materia</class>
+    <class>RC_Unicor_Lorica_Entity.Salon</class>
+    <class>RC_Unicor_Lorica_Entity.Sede</class>
+    <class>RC_Unicor_Lorica_Entity.Curso</class>
+    <class>RC_Unicor_Lorica_Entity.RegistroAsistenciaDocente</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/r&amp;c-unicor"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="root2011"/>
+    </properties>
+  </persistence-unit>
+</persistence>
