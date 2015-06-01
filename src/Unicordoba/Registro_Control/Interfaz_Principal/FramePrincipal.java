@@ -62,57 +62,78 @@ public class FramePrincipal extends javax.swing.JFrame {
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 332, Short.MAX_VALUE)
+            .addGap(0, 356, Short.MAX_VALUE)
         );
 
+        BotonRegistrarFacultad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Facultad-O.png"))); // NOI18N
         BotonRegistrarFacultad.setText("Reg. Facultad");
+        BotonRegistrarFacultad.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BotonRegistrarFacultad.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        BotonRegistrarPrograma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Programa-O.png"))); // NOI18N
         BotonRegistrarPrograma.setText("Reg. Programa");
+        BotonRegistrarPrograma.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BotonRegistrarPrograma.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        BotonRegistrarMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Materia-O.png"))); // NOI18N
         BotonRegistrarMateria.setText("Reg. Materia");
+        BotonRegistrarMateria.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BotonRegistrarMateria.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        BotonRegistrarDocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Docente-O.png"))); // NOI18N
         BotonRegistrarDocente.setText("Reg. Docente");
+        BotonRegistrarDocente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BotonRegistrarDocente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        BotonRegistrarEstudiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Estudiante-I-O.png"))); // NOI18N
         BotonRegistrarEstudiante.setText("Reg. Estudiantes");
+        BotonRegistrarEstudiante.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BotonRegistrarEstudiante.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        BotonRegistrarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Curso-O.png"))); // NOI18N
         BotonRegistrarCurso.setText("Reg. Cursos");
+        BotonRegistrarCurso.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BotonRegistrarCurso.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
+        BotonRegistrarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Estudiante-O.png"))); // NOI18N
         BotonRegistrarUsuarios.setText("Reg. Usuarios");
+        BotonRegistrarUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BotonRegistrarUsuarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout PanelAdministrarLayout = new javax.swing.GroupLayout(PanelAdministrar);
         PanelAdministrar.setLayout(PanelAdministrarLayout);
         PanelAdministrarLayout.setHorizontalGroup(
             PanelAdministrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAdministrarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(BotonRegistrarFacultad)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonRegistrarPrograma)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonRegistrarMateria)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonRegistrarDocente)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonRegistrarEstudiante)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonRegistrarCurso)
-                .addGap(18, 18, 18)
+                .addGap(10, 10, 10)
                 .addComponent(BotonRegistrarUsuarios)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelAdministrarLayout.setVerticalGroup(
             PanelAdministrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelAdministrarLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(PanelAdministrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonRegistrarFacultad)
-                    .addComponent(BotonRegistrarPrograma)
-                    .addComponent(BotonRegistrarMateria)
-                    .addComponent(BotonRegistrarDocente)
-                    .addComponent(BotonRegistrarEstudiante)
-                    .addComponent(BotonRegistrarCurso)
-                    .addComponent(BotonRegistrarUsuarios))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(PanelAdministrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BotonRegistrarMateria, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                    .addComponent(BotonRegistrarFacultad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotonRegistrarPrograma, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotonRegistrarDocente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotonRegistrarEstudiante, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotonRegistrarUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BotonRegistrarCurso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         TabPrincipal.addTab("Administrar Sistema", PanelAdministrar);
@@ -140,7 +161,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addComponent(BotonReportesGeneral)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ReportesProgramas)
-                .addContainerGap(559, Short.MAX_VALUE))
+                .addContainerGap(511, Short.MAX_VALUE))
         );
         PanelReportesLayout.setVerticalGroup(
             PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,7 +170,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addGroup(PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonReportesGeneral)
                     .addComponent(ReportesProgramas))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         TabPrincipal.addTab("Reportes", PanelReportes);
@@ -163,14 +184,14 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(PanelConexionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BotonNuevaConexion)
-                .addContainerGap(710, Short.MAX_VALUE))
+                .addContainerGap(662, Short.MAX_VALUE))
         );
         PanelConexionLayout.setVerticalGroup(
             PanelConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelConexionLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(BotonNuevaConexion)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         TabPrincipal.addTab("Conexion", PanelConexion);
@@ -193,9 +214,9 @@ public class FramePrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(TabPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TabPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(Escritorio))
         );
 
         pack();
