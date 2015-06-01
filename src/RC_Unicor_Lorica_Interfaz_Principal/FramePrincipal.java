@@ -44,6 +44,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         BotonRegistrarCurso = new javax.swing.JButton();
         BotonRegistrarUsuarios = new javax.swing.JButton();
         PanelReportes = new javax.swing.JPanel();
+        BotonReportesSemanal = new javax.swing.JButton();
         PanelConexion = new javax.swing.JPanel();
         BotonNuevaConexion = new javax.swing.JButton();
         Barra_de_Menu = new javax.swing.JMenuBar();
@@ -115,15 +116,28 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         TabPrincipal.addTab("Administrar Sistema", PanelAdministrar);
 
+        BotonReportesSemanal.setText("Reporte Semanal");
+        BotonReportesSemanal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonReportesSemanalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelReportesLayout = new javax.swing.GroupLayout(PanelReportes);
         PanelReportes.setLayout(PanelReportesLayout);
         PanelReportesLayout.setHorizontalGroup(
             PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 831, Short.MAX_VALUE)
+            .addGroup(PanelReportesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BotonReportesSemanal)
+                .addContainerGap(706, Short.MAX_VALUE))
         );
         PanelReportesLayout.setVerticalGroup(
             PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 57, Short.MAX_VALUE)
+            .addGroup(PanelReportesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BotonReportesSemanal)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         TabPrincipal.addTab("Reportes", PanelReportes);
@@ -175,6 +189,10 @@ public class FramePrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BotonReportesSemanalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReportesSemanalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonReportesSemanalActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -220,6 +238,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JButton BotonRegistrarMateria;
     private javax.swing.JButton BotonRegistrarPrograma;
     private javax.swing.JButton BotonRegistrarUsuarios;
+    private javax.swing.JButton BotonReportesSemanal;
     private javax.swing.JDesktopPane Escritorio;
     private javax.swing.JMenu MenuEdit;
     private javax.swing.JMenu MenuFile;
