@@ -175,10 +175,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="BotonReportesSemanal" min="-2" max="-2" attributes="0"/>
+                      <Component id="BotonReportesGeneral" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="ReportesProgramas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="555" max="32767" attributes="0"/>
+                      <EmptySpace pref="559" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -187,7 +187,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="BotonReportesSemanal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BotonReportesGeneral" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="ReportesProgramas" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="23" max="32767" attributes="0"/>
@@ -196,12 +196,12 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="BotonReportesSemanal">
+            <Component class="javax.swing.JButton" name="BotonReportesGeneral">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Reporte Semanal"/>
+                <Property name="text" type="java.lang.String" value="Reporte General"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonReportesSemanalActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonReportesGeneralActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="ReportesProgramas">
