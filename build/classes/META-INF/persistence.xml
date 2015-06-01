@@ -2,21 +2,21 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="R-C_Unicor_LoricaPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>RC_Unicor_Lorica_Entity.InformacionBasica</class>
-    <class>RC_Unicor_Lorica_Entity.Programa</class>
-    <class>RC_Unicor_Lorica_Entity.Universidad</class>
-    <class>RC_Unicor_Lorica_Entity.Horario</class>
-    <class>RC_Unicor_Lorica_Entity.Docente</class>
-    <class>RC_Unicor_Lorica_Entity.InformacionDeSeguridad</class>
-    <class>RC_Unicor_Lorica_Entity.UtensiliosDeClase</class>
-    <class>RC_Unicor_Lorica_Entity.Estudiante</class>
-    <class>RC_Unicor_Lorica_Entity.Dinamizador</class>
-    <class>RC_Unicor_Lorica_Entity.Facultad</class>
-    <class>RC_Unicor_Lorica_Entity.Materia</class>
-    <class>RC_Unicor_Lorica_Entity.Salon</class>
-    <class>RC_Unicor_Lorica_Entity.Sede</class>
-    <class>RC_Unicor_Lorica_Entity.Curso</class>
-    <class>RC_Unicor_Lorica_Entity.RegistroAsistenciaDocente</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.UtensiliosDeClase</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.Programa</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.InformacionBasica</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.Curso</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.Universidad</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.Sede</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.Salon</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.RegistroAsistenciaDocente</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.Docente</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.Dinamizador</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.Horario</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.InformacionDeSeguridad</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.Estudiante</class>
+    <class>Unicordoba.Registro_Control.Base_de_Datos.Entity.Materia</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/r&amp;c-unicor"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
