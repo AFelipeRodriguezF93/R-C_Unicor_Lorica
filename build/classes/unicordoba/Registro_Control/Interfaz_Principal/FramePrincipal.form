@@ -96,7 +96,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="BotonRegistrarDocente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="BotonRegistrarEstudiante" min="-2" max="-2" attributes="0"/>
+                      <Component id="BotonRegistrarEstudiante" min="-2" pref="115" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="BotonRegistrarCurso" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
