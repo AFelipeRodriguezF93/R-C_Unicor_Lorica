@@ -176,7 +176,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="BotonReportesSemanal" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="706" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="ReportesProgramas" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="555" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -184,7 +186,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="BotonReportesSemanal" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="BotonReportesSemanal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ReportesProgramas" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace pref="23" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -197,6 +202,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonReportesSemanalActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="ReportesProgramas">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte de Programas"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ReportesProgramasActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

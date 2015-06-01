@@ -45,6 +45,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         BotonRegistrarUsuarios = new javax.swing.JButton();
         PanelReportes = new javax.swing.JPanel();
         BotonReportesSemanal = new javax.swing.JButton();
+        ReportesProgramas = new javax.swing.JButton();
         PanelConexion = new javax.swing.JPanel();
         BotonNuevaConexion = new javax.swing.JButton();
         Barra_de_Menu = new javax.swing.JMenuBar();
@@ -123,6 +124,13 @@ public class FramePrincipal extends javax.swing.JFrame {
             }
         });
 
+        ReportesProgramas.setText("Reporte de Programas");
+        ReportesProgramas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReportesProgramasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelReportesLayout = new javax.swing.GroupLayout(PanelReportes);
         PanelReportes.setLayout(PanelReportesLayout);
         PanelReportesLayout.setHorizontalGroup(
@@ -130,13 +138,17 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(PanelReportesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BotonReportesSemanal)
-                .addContainerGap(706, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ReportesProgramas)
+                .addContainerGap(555, Short.MAX_VALUE))
         );
         PanelReportesLayout.setVerticalGroup(
             PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelReportesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BotonReportesSemanal)
+                .addGroup(PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BotonReportesSemanal)
+                    .addComponent(ReportesProgramas))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
@@ -193,6 +205,10 @@ public class FramePrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BotonReportesSemanalActionPerformed
 
+    private void ReportesProgramasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportesProgramasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ReportesProgramasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -245,6 +261,7 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel PanelAdministrar;
     private javax.swing.JPanel PanelConexion;
     private javax.swing.JPanel PanelReportes;
+    private javax.swing.JButton ReportesProgramas;
     private javax.swing.JTabbedPane TabPrincipal;
     // End of variables declaration//GEN-END:variables
 }
