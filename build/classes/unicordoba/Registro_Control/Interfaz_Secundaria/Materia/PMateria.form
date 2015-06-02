@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="LSemestre" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="CBSemestre" min="-2" pref="128" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="LContenido" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="186" max="32767" attributes="0"/>
+                      <Component id="LCantidadCreditos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="CBCantidadCreditos" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="ScrollPanelContenido" alignment="0" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="LNombreMateria" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="LProgramaAcedimico" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="CBListaProgramas" max="32767" attributes="0"/>
+                          <Component id="TFieldCodigo" max="32767" attributes="0"/>
+                          <Component id="TFieldNombreMateria" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LNombreMateria" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TFieldNombreMateria" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TFieldCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="CBSemestre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="LSemestre" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LProgramaAcedimico" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CBListaProgramas" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LContenido" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="LCantidadCreditos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="CBCantidadCreditos" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="ScrollPanelContenido" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="LNombreMateria">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nombre de la Materia:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TFieldNombreMateria">
+    </Component>
+    <Component class="javax.swing.JLabel" name="LCodigo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Codigo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TFieldCodigo">
+    </Component>
+    <Component class="javax.swing.JLabel" name="LSemestre">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Semestre:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="CBSemestre">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="10">
+            <StringItem index="0" value="Primer Semestre"/>
+            <StringItem index="1" value="Segundo Semestre"/>
+            <StringItem index="2" value="Tercer Semestre"/>
+            <StringItem index="3" value="Cuarto Semestre"/>
+            <StringItem index="4" value="Quinto Semestre"/>
+            <StringItem index="5" value="Sexto Semestre"/>
+            <StringItem index="6" value="Septimo Semestre"/>
+            <StringItem index="7" value="Octavo Semestre"/>
+            <StringItem index="8" value="Noveno Semestre"/>
+            <StringItem index="9" value="Decimo Semestre"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LContenido">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Contenido:"/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="ScrollPanelContenido">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="TAreaContenido">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="LCantidadCreditos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cantidad de Credito:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="CBCantidadCreditos">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="6">
+            <StringItem index="0" value="1"/>
+            <StringItem index="1" value="2"/>
+            <StringItem index="2" value="3"/>
+            <StringItem index="3" value="4"/>
+            <StringItem index="4" value="5"/>
+            <StringItem index="5" value="6"/>
+          </StringArray>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LProgramaAcedimico">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Programa Academico:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="CBListaProgramas">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
