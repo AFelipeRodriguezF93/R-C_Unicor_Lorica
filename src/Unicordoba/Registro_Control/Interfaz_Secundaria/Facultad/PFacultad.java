@@ -6,6 +6,8 @@
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Facultad;
 
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
+import java.util.List;
+import java.util.Vector;
 
 /**
  *
@@ -121,4 +123,39 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
     private javax.swing.JTextField TFieldNombreFacultad;
     private javax.swing.JTextField TFieldUbicacion;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void Guardar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void Eliminar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void ActivarEdicion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void Nuevo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void Seleccionar(Vector vectorSeleccion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Object[]> getListaParaTabla() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String[] getNombreDeColumnas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

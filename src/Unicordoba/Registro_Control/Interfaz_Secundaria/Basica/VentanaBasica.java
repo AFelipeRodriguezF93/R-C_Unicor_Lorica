@@ -6,15 +6,21 @@
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Basica;
 
 import java.awt.Component;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
  * @author AndresFelipe
+ * @param <T>
  * @param panelEdicion
  */
 public class VentanaBasica<T> extends javax.swing.JInternalFrame {
 
     private IPanelEdicion panelEdicion = null;
+    private Estado_Ventana estado_Ventana = null;
+    
     /**
      * Creates new form VentanaBasica
      * 
@@ -56,10 +62,20 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
         PanelHeadOpciones.setLayout(new java.awt.GridBagLayout());
 
         BotonNuevo.setText("Nuevo");
+        BotonNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonNuevoActionPerformed(evt);
+            }
+        });
         PanelHeadOpciones.add(BotonNuevo, new java.awt.GridBagConstraints());
 
         BotonGuardar.setText("Guardar");
         BotonGuardar.setEnabled(false);
+        BotonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonGuardarActionPerformed(evt);
+            }
+        });
         PanelHeadOpciones.add(BotonGuardar, new java.awt.GridBagConstraints());
 
         BotonEliminar.setText("Eliminar");
@@ -126,6 +142,16 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
+        
+    }//GEN-LAST:event_BotonGuardarActionPerformed
+
+    private void BotonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonNuevoActionPerformed
+        estado_Ventana = Estado_Ventana.NUEVO;
+        this.panelEdicion.Nuevo();
+        evualuarEstadoEnVentana();
+    }//GEN-LAST:event_BotonNuevoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar BarraProgreso;
@@ -139,4 +165,66 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
     private javax.swing.JSplitPane SplitPanel;
     private javax.swing.JTable TablaRegistro;
     // End of variables declaration//GEN-END:variables
+
+    private void evualuarEstadoEnVentana() {
+        if (estado_Ventana != null) {
+            if (estado_Ventana.equals(Estado_Ventana.SELECCION_EN_TABLA)) {
+                for (int i = 0; i < ((JPanel) panelEdicion).getComponents().length; i++) {
+                    Component component = ((JPanel) panelEdicion).getComponents()[i];
+                    if (!(component instanceof JLabel)) {
+                        component.setEnabled(false);
+                    }
+                }
+                BotonActivarEdicion.setEnabled(true);
+                BotonEliminar.setEnabled(true);
+                BotonGuardar.setEnabled(false);
+                BotonNuevo.setEnabled(true);
+            } else if (estado_Ventana.equals(Estado_Ventana.ELIMINADO)) {
+                for (int i = 0; i < ((JPanel) panelEdicion).getComponentCount(); i++) {
+                    Component component = ((JPanel) panelEdicion).getComponents()[i];
+                    if (component instanceof JTextField) {
+                        ((JTextField) component).setText("");
+                    }
+                    component.setEnabled(false);
+                }
+                BotonActivarEdicion.setEnabled(false);
+                BotonEliminar.setEnabled(false);
+                BotonGuardar.setEnabled(false);
+                BotonNuevo.setEnabled(true);
+            } else if (estado_Ventana.equals(Estado_Ventana.EDICION)) {
+                for (int i = 0; i < ((JPanel) panelEdicion).getComponentCount(); i++) {
+                    Component component = ((JPanel) panelEdicion).getComponents()[i];
+                    component.setEnabled(true);
+                }
+                BotonActivarEdicion.setEnabled(false);
+                BotonEliminar.setEnabled(true);
+                BotonGuardar.setEnabled(true);
+                BotonNuevo.setEnabled(true);
+            } else if (estado_Ventana.equals(Estado_Ventana.GUARDADO)) {
+                for (int i = 0; i < ((JPanel) panelEdicion).getComponentCount(); i++) {
+                    Component component = ((JPanel) panelEdicion).getComponents()[i];
+                    component.setEnabled(false);
+                }
+                BotonActivarEdicion.setEnabled(true);
+                BotonEliminar.setEnabled(true);
+                BotonEliminar.setEnabled(false);
+                BotonNuevo.setEnabled(true);
+            } else if (estado_Ventana.equals(Estado_Ventana.NUEVO)) {
+                for (int i = 0; i < ((JPanel) panelEdicion).getComponentCount(); i++) {
+                    Component component = ((JPanel) panelEdicion).getComponents()[i];
+                    if (component instanceof JTextField) {
+                        ((JTextField) component).setText("");
+                    }
+                    if (component instanceof JLabel) {
+                        ((JTextField) component).setText("");
+                    }
+                    component.setEnabled(true);
+                }
+                BotonActivarEdicion.setEnabled(false);
+                BotonEliminar.setEnabled(false);
+                BotonGuardar.setEnabled(true);
+                BotonNuevo.setEnabled(true);
+            }
+        }
+    }
 }

@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Unicordoba.Registro_Control.Interfaz_Secundaria.Docente;
+package Unicordoba.Registro_Control.Interfaz_Secundaria.Basica;
 
 /**
  *
  * @author AndresFelipe
  */
-public class TDocente {
-    
+public enum Estado_Ventana {    
+    NUEVO,
+    GUARDADO,
+    ELIMINADO,
+    EDICION,
+    SELECCION_EN_TABLA
 }
