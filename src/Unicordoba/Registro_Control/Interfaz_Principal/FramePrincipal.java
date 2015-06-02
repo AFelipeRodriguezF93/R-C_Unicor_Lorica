@@ -165,17 +165,17 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(PanelReportesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BotonReportesGeneral)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ReportesProgramas)
-                .addContainerGap(557, Short.MAX_VALUE))
+                .addContainerGap(565, Short.MAX_VALUE))
         );
         PanelReportesLayout.setVerticalGroup(
             PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelReportesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BotonReportesGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                    .addComponent(ReportesProgramas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ReportesProgramas, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(BotonReportesGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 

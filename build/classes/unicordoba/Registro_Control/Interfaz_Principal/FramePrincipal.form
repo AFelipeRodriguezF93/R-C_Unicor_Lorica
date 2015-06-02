@@ -211,9 +211,9 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="BotonReportesGeneral" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="ReportesProgramas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="557" max="32767" attributes="0"/>
+                      <EmptySpace pref="565" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -222,8 +222,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="BotonReportesGeneral" pref="81" max="32767" attributes="0"/>
-                          <Component id="ReportesProgramas" max="32767" attributes="0"/>
+                          <Component id="ReportesProgramas" pref="81" max="32767" attributes="0"/>
+                          <Component id="BotonReportesGeneral" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
