@@ -138,14 +138,20 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         TabPrincipal.addTab("Administrar Sistema", PanelAdministrar);
 
+        BotonReportesGeneral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Reportes-III-O.png"))); // NOI18N
         BotonReportesGeneral.setText("Reporte General");
+        BotonReportesGeneral.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BotonReportesGeneral.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         BotonReportesGeneral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonReportesGeneralActionPerformed(evt);
             }
         });
 
+        ReportesProgramas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Reportes-II-O.png"))); // NOI18N
         ReportesProgramas.setText("Reporte de Programas");
+        ReportesProgramas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ReportesProgramas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         ReportesProgramas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReportesProgramasActionPerformed(evt);
@@ -159,18 +165,18 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(PanelReportesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BotonReportesGeneral)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(ReportesProgramas)
-                .addContainerGap(511, Short.MAX_VALUE))
+                .addContainerGap(557, Short.MAX_VALUE))
         );
         PanelReportesLayout.setVerticalGroup(
             PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelReportesLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonReportesGeneral)
-                    .addComponent(ReportesProgramas))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addGroup(PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BotonReportesGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(ReportesProgramas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         TabPrincipal.addTab("Reportes", PanelReportes);
@@ -184,7 +190,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(PanelConexionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BotonNuevaConexion)
-                .addContainerGap(662, Short.MAX_VALUE))
+                .addContainerGap(716, Short.MAX_VALUE))
         );
         PanelConexionLayout.setVerticalGroup(
             PanelConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
