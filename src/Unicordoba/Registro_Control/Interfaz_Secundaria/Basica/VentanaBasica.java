@@ -5,17 +5,24 @@
  */
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Basica;
 
+import java.awt.Component;
+
 /**
  *
  * @author AndresFelipe
+ * @param panelEdicion
  */
-public class VentanaBasica extends javax.swing.JInternalFrame {
+public class VentanaBasica<T> extends javax.swing.JInternalFrame {
 
+    private IPanelEdicion panelEdicion = null;
     /**
      * Creates new form VentanaBasica
+     * 
      */
-    public VentanaBasica() {
+    public VentanaBasica(IPanelEdicion panelEdicion) {
+        this.panelEdicion = panelEdicion;
         initComponents();
+        SplitPanel.setTopComponent((Component) panelEdicion);
     }
 
     /**

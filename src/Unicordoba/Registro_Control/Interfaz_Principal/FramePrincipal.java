@@ -5,10 +5,17 @@
  */
 package Unicordoba.Registro_Control.Interfaz_Principal;
 
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.VentanaBasica;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Docente.PDocente;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Facultad.PFacultad;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Materia.PMateria;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Programa.PPrograma;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -69,21 +76,41 @@ public class FramePrincipal extends javax.swing.JFrame {
         BotonRegistrarFacultad.setText("Reg. Facultad");
         BotonRegistrarFacultad.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BotonRegistrarFacultad.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BotonRegistrarFacultad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarFacultadActionPerformed(evt);
+            }
+        });
 
         BotonRegistrarPrograma.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Programa-O.png"))); // NOI18N
         BotonRegistrarPrograma.setText("Reg. Programa");
         BotonRegistrarPrograma.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BotonRegistrarPrograma.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BotonRegistrarPrograma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarProgramaActionPerformed(evt);
+            }
+        });
 
         BotonRegistrarMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Materia-O.png"))); // NOI18N
         BotonRegistrarMateria.setText("Reg. Materia");
         BotonRegistrarMateria.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BotonRegistrarMateria.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BotonRegistrarMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarMateriaActionPerformed(evt);
+            }
+        });
 
         BotonRegistrarDocente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Docente-O.png"))); // NOI18N
         BotonRegistrarDocente.setText("Reg. Docente");
         BotonRegistrarDocente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BotonRegistrarDocente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BotonRegistrarDocente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarDocenteActionPerformed(evt);
+            }
+        });
 
         BotonRegistrarEstudiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Estudiante-I-O.png"))); // NOI18N
         BotonRegistrarEstudiante.setText("Reg. Estudiantes");
@@ -236,6 +263,44 @@ public class FramePrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ReportesProgramasActionPerformed
 
+    private void BotonRegistrarFacultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarFacultadActionPerformed
+        VentanaBasica ventanaBasica;
+        ventanaBasica = new VentanaBasica(new PFacultad());
+        FramePrincipal.getSingleton().AddVentana(ventanaBasica);        
+    }//GEN-LAST:event_BotonRegistrarFacultadActionPerformed
+
+    private void BotonRegistrarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarProgramaActionPerformed
+        VentanaBasica ventanaBasica;
+        ventanaBasica = new VentanaBasica(new PPrograma());
+        FramePrincipal.getSingleton().AddVentana(ventanaBasica);
+    }//GEN-LAST:event_BotonRegistrarProgramaActionPerformed
+
+    private void BotonRegistrarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarMateriaActionPerformed
+        VentanaBasica ventanaBasica;
+        ventanaBasica = new VentanaBasica(new PMateria());
+        FramePrincipal.getSingleton().AddVentana(ventanaBasica);
+    }//GEN-LAST:event_BotonRegistrarMateriaActionPerformed
+
+    private void BotonRegistrarDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarDocenteActionPerformed
+        VentanaBasica ventanaBasica;
+        ventanaBasica = new VentanaBasica(new PDocente());
+        FramePrincipal.getSingleton().AddVentana(ventanaBasica);
+    }//GEN-LAST:event_BotonRegistrarDocenteActionPerformed
+
+    private static FramePrincipal framePrincipal = null;
+    
+    public void AddVentana(JInternalFrame internalFrame ) {
+        Escritorio.add(internalFrame);
+        internalFrame.setVisible(true);
+    }
+
+    public static FramePrincipal getSingleton() {
+        if (framePrincipal == null) {
+            framePrincipal = new FramePrincipal();
+        }
+        return framePrincipal;
+    }   
+    
     /**
      * @param args the command line arguments
      */
@@ -265,8 +330,9 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new FramePrincipal().setVisible(true);
+                getSingleton().setVisible(true);
             }
         });
     }

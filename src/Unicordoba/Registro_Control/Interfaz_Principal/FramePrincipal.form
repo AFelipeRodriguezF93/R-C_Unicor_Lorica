@@ -133,6 +133,9 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonRegistrarFacultadActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="BotonRegistrarPrograma">
               <Properties>
@@ -143,6 +146,9 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonRegistrarProgramaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="BotonRegistrarMateria">
               <Properties>
@@ -153,6 +159,9 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonRegistrarMateriaActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="BotonRegistrarDocente">
               <Properties>
@@ -163,6 +172,9 @@
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="verticalTextPosition" type="int" value="3"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonRegistrarDocenteActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="BotonRegistrarEstudiante">
               <Properties>
