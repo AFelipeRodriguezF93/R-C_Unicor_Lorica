@@ -19,6 +19,7 @@ import java.util.Vector;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -35,10 +36,11 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
      */
     public PFacultad() {
         initComponents();
-        CarcarCBUniversidades();
+        CarcarCBUniversidades();        
     }
     
     public void CarcarCBUniversidades(){
+        
         entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
         entityManager = entityManagerFactory.createEntityManager();
         Iterator iterator = entityManager.createNamedQuery("Universidad.findAll").getResultList().iterator();

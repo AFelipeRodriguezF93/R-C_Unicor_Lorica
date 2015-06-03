@@ -5,9 +5,15 @@
  */
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Docente;
 
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.DocenteJpaController;
+import Unicordoba.Registro_Control.Base_de_Datos.Entity.Docente;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -15,6 +21,10 @@ import java.util.Vector;
  */
 public class PDocente extends javax.swing.JPanel implements IPanelEdicion {
 
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
+    Docente docente = new Docente();
+    
     /**
      * Creates new form PDocente
      */
@@ -232,11 +242,27 @@ public class PDocente extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public List<Object[]> getListaParaTabla() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+        DocenteJpaController docenteJpaController = new  DocenteJpaController(entityManagerFactory);
+        
+        List<Object[]> list = new ArrayList();
+        for (Docente docente : docenteJpaController.findDocenteEntities()) {
+            list.add(new Object[]{
+                docente.getInformacionBasicaId().getNombres(),
+                docente.getInformacionBasicaId().getApellidos(),
+                docente.getInformacionBasicaId().getCodigo(),
+                docente.getInformacionBasicaId().getTiCc(),
+                docente.getInformacionBasicaId().getCorreo(),
+                docente.getInformacionBasicaId().getTelefono(),
+                docente.getInformacionDeSeguridadidI().getCodigoHuella(),
+                docente.getInformacionDeSeguridadidI().getClave()
+            });
+        }
+        return list;
     }
 
     @Override
     public String[] getNombreDeColumnas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new String[]{"Nombre", "Apellidos","Codigo","Identificacion","Correo","Telefono","Codigo Huella", "Clave"};
     }
 }
