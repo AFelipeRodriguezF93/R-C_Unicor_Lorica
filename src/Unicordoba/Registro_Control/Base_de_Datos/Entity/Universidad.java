@@ -128,7 +128,7 @@ public class Universidad implements Serializable {
 
     @Override
     public String toString() {
-        return "RC_Unicor_Lorica_Entity.Universidad[ id=" + id + " ]";
+        return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Universidad[ id=" + id + " ]";
     }
     
 }

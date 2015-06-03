@@ -123,7 +123,7 @@ public class Curso implements Serializable {
 
     @Override
     public String toString() {
-        return "RC_Unicor_Lorica_Entity.Curso[ id=" + id + " ]";
+        return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Curso[ id=" + id + " ]";
     }
     
 }

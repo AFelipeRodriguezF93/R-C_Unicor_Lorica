@@ -6,9 +6,14 @@
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Facultad;
 
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.FacultadJpaController;
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.NonexistentEntityException;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad;
+import Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad_;
+import Unicordoba.Registro_Control.Base_de_Datos.Entity.Universidad;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.Estado_Ventana;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 import javax.persistence.EntityManager;
@@ -30,6 +35,16 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
      */
     public PFacultad() {
         initComponents();
+        CarcarCBUniversidades();
+    }
+    
+    public void CarcarCBUniversidades(){
+        entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+        entityManager = entityManagerFactory.createEntityManager();
+        Iterator iterator = entityManager.createNamedQuery("Universidad.findAll").getResultList().iterator();
+        while (iterator.hasNext()){
+            this.CBUniversidad.addItem(((Universidad)iterator.next()));
+        }
     }
  
     /**
@@ -138,10 +153,16 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
     public void Guardar() {
         
     }
-
+    
     @Override
     public void Eliminar() {
-        
+        /*try {
+            entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+            FacultadJpaController facultadJpaController = new FacultadJpaController(entityManagerFactory);
+            facultadJpaController.destroy();
+        } catch (NonexistentEntityException ex) {
+            ex.printStackTrace();
+        }*/
     }
 
     @Override
@@ -185,5 +206,5 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
     @Override
     public String[] getNombreDeColumnas() {
         return new String[]{"Universidad", "Nombre","Decano","Ubicacion"};
-    }
+    }  
 }

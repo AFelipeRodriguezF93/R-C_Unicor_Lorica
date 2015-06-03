@@ -37,7 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Materia.findByNombre", query = "SELECT m FROM Materia m WHERE m.nombre = :nombre"),
     @NamedQuery(name = "Materia.findBySemestre", query = "SELECT m FROM Materia m WHERE m.semestre = :semestre"),
     @NamedQuery(name = "Materia.findByContenido", query = "SELECT m FROM Materia m WHERE m.contenido = :contenido"),
-    @NamedQuery(name = "Materia.findByCreditos", query = "SELECT m FROM Materia m WHERE m.creditos = :creditos")})
+    @NamedQuery(name = "Materia.findByCreditos", query = "SELECT m FROM Materia m WHERE m.creditos = :creditos"),
+    @NamedQuery(name = "Materia.findByCodigo", query = "SELECT m FROM Materia m WHERE m.codigo = :codigo")})
 public class Materia implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -53,6 +54,9 @@ public class Materia implements Serializable {
     private String contenido;
     @Column(name = "Creditos")
     private Integer creditos;
+    @Basic(optional = false)
+    @Column(name = "Codigo")
+    private int codigo;
     @ManyToMany(mappedBy = "materiaList")
     private List<Docente> docenteList;
     @JoinTable(name = "materia_has_curso", joinColumns = {
@@ -70,6 +74,11 @@ public class Materia implements Serializable {
 
     public Materia(Integer id) {
         this.id = id;
+    }
+
+    public Materia(Integer id, int codigo) {
+        this.id = id;
+        this.codigo = codigo;
     }
 
     public Integer getId() {
@@ -110,6 +119,14 @@ public class Materia implements Serializable {
 
     public void setCreditos(Integer creditos) {
         this.creditos = creditos;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     @XmlTransient
@@ -170,7 +187,7 @@ public class Materia implements Serializable {
 
     @Override
     public String toString() {
-        return "RC_Unicor_Lorica_Entity.Materia[ id=" + id + " ]";
+        return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Materia[ id=" + id + " ]";
     }
     
 }

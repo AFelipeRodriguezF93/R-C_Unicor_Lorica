@@ -107,7 +107,7 @@ public class Dinamizador implements Serializable {
 
     @Override
     public String toString() {
-        return "RC_Unicor_Lorica_Entity.Dinamizador[ idDinamizador=" + idDinamizador + " ]";
+        return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Dinamizador[ idDinamizador=" + idDinamizador + " ]";
     }
     
 }

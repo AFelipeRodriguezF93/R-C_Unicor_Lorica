@@ -154,7 +154,7 @@ public class Facultad implements Serializable {
 
     @Override
     public String toString() {
-        return "RC_Unicor_Lorica_Entity.Facultad[ id=" + id + " ]";
+        return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad[ id=" + id + " ]";
     }
     
 }

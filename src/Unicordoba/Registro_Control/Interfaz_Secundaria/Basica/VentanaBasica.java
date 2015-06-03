@@ -35,7 +35,7 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
         this.panelEdicion = panelEdicion;
         initComponents();
         SplitPanel.setTopComponent((Component) panelEdicion);
-        //cargarTabla();
+        cargarTabla();
     }
     
     
@@ -209,7 +209,7 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
     private javax.swing.JPanel PanelHeadOpciones;
     private javax.swing.JScrollPane ScrollPaneTablaRegistro;
     private javax.swing.JSplitPane SplitPanel;
-    private javax.swing.JTable TablaRegistro;
+    public javax.swing.JTable TablaRegistro;
     // End of variables declaration//GEN-END:variables
 
     

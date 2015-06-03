@@ -5,8 +5,7 @@
  */
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Programa;
 
-import Unicordoba.Registro_Control.Base_de_Datos.Controlador.FacultadJpaController;
-import Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad;
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.ProgramaJpaController;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Programa;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
 import java.util.ArrayList;
@@ -162,11 +161,23 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public List<Object[]> getListaParaTabla() {
-        return null;
+        entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+        ProgramaJpaController programaJpaController = new ProgramaJpaController(entityManagerFactory);
+        
+        List<Object[]> list = new ArrayList();
+        for (Programa programa : programaJpaController.findProgramaEntities()) {
+            list.add(new Object[]{
+                programa.getFacultadid().getNombre(),
+                programa.getCodigo(),
+                programa.getNombre(), 
+                programa.getJefePrograma()
+            });
+        }
+        return list;
     }
 
     @Override
     public String[] getNombreDeColumnas() {
-        return new String[]{"Universidad", "Nombre","Decano","Ubicacion"};
+        return new String[]{"Faculdad", "Codigo", "Nombre","Jefe de Progama",};
     }
 }

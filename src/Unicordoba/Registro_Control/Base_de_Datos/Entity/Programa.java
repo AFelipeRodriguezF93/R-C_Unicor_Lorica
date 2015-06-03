@@ -143,7 +143,7 @@ public class Programa implements Serializable {
 
     @Override
     public String toString() {
-        return "RC_Unicor_Lorica_Entity.Programa[ id=" + id + " ]";
+        return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Programa[ id=" + id + " ]";
     }
     
 }

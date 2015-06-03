@@ -150,7 +150,7 @@ public class InformacionDeSeguridad implements Serializable {
 
     @Override
     public String toString() {
-        return "RC_Unicor_Lorica_Entity.InformacionDeSeguridad[ idI=" + idI + " ]";
+        return "Unicordoba.Registro_Control.Base_de_Datos.Entity.InformacionDeSeguridad[ idI=" + idI + " ]";
     }
     
 }

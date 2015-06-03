@@ -5,9 +5,15 @@
  */
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Materia;
 
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.MateriaJpaController;
+import Unicordoba.Registro_Control.Base_de_Datos.Entity.Materia;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -15,6 +21,10 @@ import java.util.Vector;
  */
 public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
 
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
+    Materia materia = new Materia();
+    
     /**
      * Creates new form PMateria
      */
@@ -210,11 +220,24 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public List<Object[]> getListaParaTabla() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+        MateriaJpaController materiaJpaController = new MateriaJpaController(entityManagerFactory);
+        
+        List<Object[]> list = new ArrayList();
+        for (Materia materia : materiaJpaController.findMateriaEntities()){
+            list.add(new Object[]{
+                materia.getNombre(),
+                materia.getCodigo(),
+                materia.getSemestre(),
+                materia.getCreditos(),
+                materia.getContenido()               
+            });
+        }
+        return list;
     }
 
     @Override
     public String[] getNombreDeColumnas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new String[]{"Nombre", "Codigo", "Semestre","Credito","Contenido"};
     }
 }

@@ -154,7 +154,7 @@ public class Salon implements Serializable {
 
     @Override
     public String toString() {
-        return "RC_Unicor_Lorica_Entity.Salon[ id=" + id + " ]";
+        return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Salon[ id=" + id + " ]";
     }
     
 }
