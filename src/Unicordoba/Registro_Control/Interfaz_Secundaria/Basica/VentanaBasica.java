@@ -6,9 +6,14 @@
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Basica;
 
 import java.awt.Component;
+import static java.util.Collections.list;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
+import java.util.Vector;
+import static org.eclipse.persistence.jpa.jpql.utility.CollectionTools.list;
 
 /**
  *
@@ -20,6 +25,7 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
 
     private IPanelEdicion panelEdicion = null;
     private Estado_Ventana estado_Ventana = null;
+    private List<Object[]> list;
     
     /**
      * Creates new form VentanaBasica
@@ -29,6 +35,17 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
         this.panelEdicion = panelEdicion;
         initComponents();
         SplitPanel.setTopComponent((Component) panelEdicion);
+        //cargarTabla();
+    }
+    
+    
+    public void cargarTabla() {
+        list = panelEdicion.getListaParaTabla();
+        DefaultTableModel defaultTableModel;
+        TablaRegistro.setModel(defaultTableModel = new DefaultTableModel(panelEdicion.getNombreDeColumnas(), 0));
+        for (Object[] fila : list) {
+            defaultTableModel.addRow(fila);
+        }
     }
 
     /**
@@ -92,6 +109,12 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
         SplitPanel.setOneTouchExpandable(true);
         SplitPanel.setPreferredSize(new java.awt.Dimension(452, 430));
 
+        ScrollPaneTablaRegistro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                ScrollPaneTablaRegistroKeyReleased(evt);
+            }
+        });
+
         TablaRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -103,6 +126,16 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        TablaRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                TablaRegistroMouseReleased(evt);
+            }
+        });
+        TablaRegistro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                TablaRegistroKeyReleased(evt);
+            }
+        });
         ScrollPaneTablaRegistro.setViewportView(TablaRegistro);
 
         SplitPanel.setBottomComponent(ScrollPaneTablaRegistro);
@@ -152,6 +185,19 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
         evualuarEstadoEnVentana();
     }//GEN-LAST:event_BotonNuevoActionPerformed
 
+    private void ScrollPaneTablaRegistroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ScrollPaneTablaRegistroKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ScrollPaneTablaRegistroKeyReleased
+
+    private void TablaRegistroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaRegistroKeyReleased
+        notificarSeleccionDeObjeto();
+    }//GEN-LAST:event_TablaRegistroKeyReleased
+
+    private void TablaRegistroMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaRegistroMouseReleased
+        notificarSeleccionDeObjeto();
+    }//GEN-LAST:event_TablaRegistroMouseReleased
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar BarraProgreso;
@@ -166,6 +212,18 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
     private javax.swing.JTable TablaRegistro;
     // End of variables declaration//GEN-END:variables
 
+    
+    private void notificarSeleccionDeObjeto() {
+        estado_Ventana = Estado_Ventana.SELECCION_EN_TABLA;
+
+        int Filas = TablaRegistro.getSelectedRow();
+        int Columnas = TablaRegistro.getSelectedColumn();
+        if (Filas > -1 && Columnas > -1) {
+            this.panelEdicion.Seleccionar((Vector) ((DefaultTableModel) TablaRegistro.getModel()).getDataVector().get(Filas));
+        }
+        evualuarEstadoEnVentana();
+    }
+    
     private void evualuarEstadoEnVentana() {
         if (estado_Ventana != null) {
             if (estado_Ventana.equals(Estado_Ventana.SELECCION_EN_TABLA)) {

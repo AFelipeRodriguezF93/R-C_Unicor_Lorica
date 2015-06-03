@@ -5,9 +5,16 @@
  */
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Programa;
 
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.FacultadJpaController;
+import Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad;
+import Unicordoba.Registro_Control.Base_de_Datos.Entity.Programa;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -15,6 +22,10 @@ import java.util.Vector;
  */
 public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
 
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
+    Programa programa = new Programa();
+    
     /**
      * Creates new form PPrograma
      */
@@ -126,36 +137,36 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public void Guardar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void Eliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void ActivarEdicion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void Nuevo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void Seleccionar(Vector vectorSeleccion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public List<Object[]> getListaParaTabla() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return null;
     }
 
     @Override
     public String[] getNombreDeColumnas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new String[]{"Universidad", "Nombre","Decano","Ubicacion"};
     }
 }

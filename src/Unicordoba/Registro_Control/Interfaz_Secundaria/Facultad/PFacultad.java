@@ -5,9 +5,15 @@
  */
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Facultad;
 
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.FacultadJpaController;
+import Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -15,6 +21,10 @@ import java.util.Vector;
  */
 public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
 
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
+    Facultad facultad = new Facultad();
+    
     /**
      * Creates new form Facultad
      */
@@ -126,36 +136,54 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public void Guardar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void Eliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void ActivarEdicion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void Nuevo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        facultad = new Facultad();
     }
 
     @Override
     public void Seleccionar(Vector vectorSeleccion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+        FacultadJpaController facultadJpaController = new FacultadJpaController(entityManagerFactory);
+        facultad = facultadJpaController.findFacultad(Integer.valueOf(vectorSeleccion.get(0).toString()));
+        CBUniversidad.setSelectedItem(facultad.getUniversidadid());
+        TFieldNombreFacultad.setText(facultad.getNombre());
+        TFieldNombreDecano.setText(facultad.getDecano());
+        TFieldUbicacion.setText(facultad.getUbicacion());     
     }
 
     @Override
     public List<Object[]> getListaParaTabla() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+        FacultadJpaController facultadJpaController = new FacultadJpaController(entityManagerFactory);
+
+        List<Object[]> list = new ArrayList();
+        for (Facultad facultad : facultadJpaController.findFacultadEntities()) {
+            list.add(new Object[]{
+                facultad.getUniversidadid().getNombre(),
+                facultad.getNombre(), 
+                facultad.getDecano(),
+                facultad.getUbicacion() 
+            });
+        }
+        return list;
     }
 
     @Override
     public String[] getNombreDeColumnas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new String[]{"Universidad", "Nombre","Decano","Ubicacion"};
     }
 }
