@@ -7,6 +7,7 @@ package Unicordoba.Registro_Control.Interfaz_Secundaria.Programa;
 
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.ProgramaJpaController;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Programa;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.Estado_Ventana;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
 import java.util.ArrayList;
 import java.util.List;
@@ -135,8 +136,22 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void Guardar() {
-        
+    public void Guardar(Estado_Ventana estado_Ventana) {
+        try {
+            entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+            ProgramaJpaController programaJpaController = new ProgramaJpaController(entityManagerFactory);
+            programa.setNombre(TFieldNombrePrograma.getText());
+              
+                        
+            if (estado_Ventana.equals(Estado_Ventana.NUEVO)) {
+                programaJpaController.create(programa);
+            } else {
+                programa.setId(programa.getId());
+                programaJpaController.edit(programa);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }  
     }
 
     @Override

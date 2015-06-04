@@ -19,8 +19,7 @@ import static org.eclipse.persistence.jpa.jpql.utility.CollectionTools.list;
 /**
  *
  * @author AndresFelipe
- * @param <T>
- * @param panelEdicion
+ * 
  */
 public class VentanaBasica<T> extends javax.swing.JInternalFrame {
 
@@ -31,6 +30,7 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
     /**
      * Creates new form VentanaBasica
      * 
+     * @param panelEdicion
      */
     public VentanaBasica(IPanelEdicion panelEdicion) {
         this.panelEdicion = panelEdicion;
@@ -181,7 +181,7 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
         if (JOptionPane.showConfirmDialog(rootPane, "Confirma guardar ?", "Guardar", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
-            //this.panelEdicion.Guardar(estado_Ventana);
+            this.panelEdicion.Guardar(estado_Ventana);
             estado_Ventana = Estado_Ventana.GUARDADO;
             evualuarEstadoEnVentana();
             this.cargarTabla();

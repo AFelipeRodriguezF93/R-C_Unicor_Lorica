@@ -153,12 +153,12 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void Guardar() {
-        /*try {
+    public void Guardar(Estado_Ventana estado_Ventana ) {
+        try {
             entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
             FacultadJpaController facultadJpaController = new FacultadJpaController(entityManagerFactory);
             facultad.setNombre(TFieldNombreFacultad.getText());
-            //facultad.setUniversidadid(CBUniversidad.);
+            //facultad.setUniversidadid(CBUniversidad);
             facultad.setDecano(TFieldNombreDecano.getText());
             facultad.setUbicacion(TFieldUbicacion.getText());          
                         
@@ -170,7 +170,7 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-        } */       
+        }
     }
     
     @Override

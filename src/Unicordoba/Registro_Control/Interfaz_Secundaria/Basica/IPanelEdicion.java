@@ -13,7 +13,7 @@ import java.util.Vector;
  * @author AndresFelipe
  */
 public interface IPanelEdicion {    
-    public void Guardar();
+    public void Guardar(Estado_Ventana estado_Ventana);
     public void Eliminar();
     public void ActivarEdicion();
     public void Nuevo();

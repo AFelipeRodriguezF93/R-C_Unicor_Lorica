@@ -40,7 +40,6 @@ public class FramePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Escritorio = new javax.swing.JDesktopPane();
         TabPrincipal = new javax.swing.JTabbedPane();
         PanelAdministrar = new javax.swing.JPanel();
         BotonRegistrarFacultad = new javax.swing.JButton();
@@ -50,27 +49,17 @@ public class FramePrincipal extends javax.swing.JFrame {
         BotonRegistrarEstudiante = new javax.swing.JButton();
         BotonRegistrarCurso = new javax.swing.JButton();
         BotonRegistrarUsuarios = new javax.swing.JButton();
+        PanelConexion = new javax.swing.JPanel();
+        BotonNuevaConexion = new javax.swing.JButton();
         PanelReportes = new javax.swing.JPanel();
         BotonReportesGeneral = new javax.swing.JButton();
         ReportesProgramas = new javax.swing.JButton();
-        PanelConexion = new javax.swing.JPanel();
-        BotonNuevaConexion = new javax.swing.JButton();
+        Escritorio = new javax.swing.JDesktopPane();
         Barra_de_Menu = new javax.swing.JMenuBar();
         MenuFile = new javax.swing.JMenu();
         MenuEdit = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
-        Escritorio.setLayout(EscritorioLayout);
-        EscritorioLayout.setHorizontalGroup(
-            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        EscritorioLayout.setVerticalGroup(
-            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 356, Short.MAX_VALUE)
-        );
 
         BotonRegistrarFacultad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Facultad-O.png"))); // NOI18N
         BotonRegistrarFacultad.setText("Reg. Facultad");
@@ -165,6 +154,27 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         TabPrincipal.addTab("Administrar Sistema", PanelAdministrar);
 
+        BotonNuevaConexion.setText("Asistencia");
+
+        javax.swing.GroupLayout PanelConexionLayout = new javax.swing.GroupLayout(PanelConexion);
+        PanelConexion.setLayout(PanelConexionLayout);
+        PanelConexionLayout.setHorizontalGroup(
+            PanelConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelConexionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BotonNuevaConexion)
+                .addContainerGap(746, Short.MAX_VALUE))
+        );
+        PanelConexionLayout.setVerticalGroup(
+            PanelConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelConexionLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(BotonNuevaConexion)
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
+
+        TabPrincipal.addTab("Control de Asistencia", PanelConexion);
+
         BotonReportesGeneral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Reportes-III-O.png"))); // NOI18N
         BotonReportesGeneral.setText("Reporte General");
         BotonReportesGeneral.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -208,26 +218,16 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         TabPrincipal.addTab("Reportes", PanelReportes);
 
-        BotonNuevaConexion.setText("Nueva Conexion");
-
-        javax.swing.GroupLayout PanelConexionLayout = new javax.swing.GroupLayout(PanelConexion);
-        PanelConexion.setLayout(PanelConexionLayout);
-        PanelConexionLayout.setHorizontalGroup(
-            PanelConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelConexionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BotonNuevaConexion)
-                .addContainerGap(716, Short.MAX_VALUE))
+        javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
+        Escritorio.setLayout(EscritorioLayout);
+        EscritorioLayout.setHorizontalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        PanelConexionLayout.setVerticalGroup(
-            PanelConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelConexionLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(BotonNuevaConexion)
-                .addContainerGap(57, Short.MAX_VALUE))
+        EscritorioLayout.setVerticalGroup(
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 356, Short.MAX_VALUE)
         );
-
-        TabPrincipal.addTab("Conexion", PanelConexion);
 
         MenuFile.setText("File");
         Barra_de_Menu.add(MenuFile);

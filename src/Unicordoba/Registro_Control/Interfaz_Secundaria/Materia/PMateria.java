@@ -7,6 +7,7 @@ package Unicordoba.Registro_Control.Interfaz_Secundaria.Materia;
 
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.MateriaJpaController;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Materia;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.Estado_Ventana;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
 import java.util.ArrayList;
 import java.util.List;
@@ -194,7 +195,7 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void Guardar() {
+    public void Guardar(Estado_Ventana estado_Ventana ) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
