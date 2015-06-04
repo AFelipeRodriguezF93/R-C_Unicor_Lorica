@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import static org.eclipse.persistence.jpa.jpql.utility.CollectionTools.list;
 
 /**
@@ -36,8 +37,7 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
         initComponents();
         SplitPanel.setTopComponent((Component) panelEdicion);
         cargarTabla();
-    }
-    
+    }    
     
     public void cargarTabla() {
         list = panelEdicion.getListaParaTabla();
@@ -97,10 +97,20 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
 
         BotonEliminar.setText("Eliminar");
         BotonEliminar.setEnabled(false);
+        BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEliminarActionPerformed(evt);
+            }
+        });
         PanelHeadOpciones.add(BotonEliminar, new java.awt.GridBagConstraints());
 
         BotonActivarEdicion.setText("Activar Edición");
         BotonActivarEdicion.setEnabled(false);
+        BotonActivarEdicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonActivarEdicionActionPerformed(evt);
+            }
+        });
         PanelHeadOpciones.add(BotonActivarEdicion, new java.awt.GridBagConstraints());
 
         SplitPanel.setBorder(null);
@@ -108,12 +118,6 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
         SplitPanel.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         SplitPanel.setOneTouchExpandable(true);
         SplitPanel.setPreferredSize(new java.awt.Dimension(452, 430));
-
-        ScrollPaneTablaRegistro.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                ScrollPaneTablaRegistroKeyReleased(evt);
-            }
-        });
 
         TablaRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -176,7 +180,12 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
-        
+        if (JOptionPane.showConfirmDialog(rootPane, "Confirma guardar ?", "Guardar", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+            //this.panelEdicion.Guardar(estado_Ventana);
+            estado_Ventana = Estado_Ventana.GUARDADO;
+            evualuarEstadoEnVentana();
+            this.cargarTabla();
+        }
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void BotonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonNuevoActionPerformed
@@ -185,10 +194,6 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
         evualuarEstadoEnVentana();
     }//GEN-LAST:event_BotonNuevoActionPerformed
 
-    private void ScrollPaneTablaRegistroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ScrollPaneTablaRegistroKeyReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ScrollPaneTablaRegistroKeyReleased
-
     private void TablaRegistroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TablaRegistroKeyReleased
         notificarSeleccionDeObjeto();
     }//GEN-LAST:event_TablaRegistroKeyReleased
@@ -196,6 +201,21 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
     private void TablaRegistroMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaRegistroMouseReleased
         notificarSeleccionDeObjeto();
     }//GEN-LAST:event_TablaRegistroMouseReleased
+
+    private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
+        if (JOptionPane.showConfirmDialog(rootPane, "Confirma eliminar ?", "Eliminar", JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION) {
+            estado_Ventana = Estado_Ventana.ELIMINADO;
+            this.panelEdicion.Eliminar();
+            evualuarEstadoEnVentana();
+            this.cargarTabla();
+        }
+    }//GEN-LAST:event_BotonEliminarActionPerformed
+
+    private void BotonActivarEdicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActivarEdicionActionPerformed
+        estado_Ventana = Estado_Ventana.EDICION;
+        this.panelEdicion.ActivarEdicion();
+        evualuarEstadoEnVentana();
+    }//GEN-LAST:event_BotonActivarEdicionActionPerformed
     
     
 

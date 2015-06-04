@@ -10,6 +10,7 @@ package Unicordoba.Registro_Control.Interfaz_Secundaria.Basica;
  * @author AndresFelipe
  */
 public enum Estado_Ventana {    
+    
     NUEVO,
     GUARDADO,
     ELIMINADO,

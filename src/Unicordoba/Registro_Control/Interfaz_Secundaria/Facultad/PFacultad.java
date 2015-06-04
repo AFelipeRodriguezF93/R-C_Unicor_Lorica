@@ -6,9 +6,9 @@
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Facultad;
 
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.FacultadJpaController;
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.IllegalOrphanException;
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.NonexistentEntityException;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad;
-import Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad_;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Universidad;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.Estado_Ventana;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
@@ -16,10 +16,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 /**
  *
@@ -153,18 +154,37 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public void Guardar() {
-        
+        /*try {
+            entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+            FacultadJpaController facultadJpaController = new FacultadJpaController(entityManagerFactory);
+            facultad.setNombre(TFieldNombreFacultad.getText());
+            //facultad.setUniversidadid(CBUniversidad.);
+            facultad.setDecano(TFieldNombreDecano.getText());
+            facultad.setUbicacion(TFieldUbicacion.getText());          
+                        
+            if (estado_Ventana.equals(Estado_Ventana.NUEVO)) {
+                facultadJpaController.create(facultad);
+            } else {
+                facultad.setId(facultad.getId());
+                facultadJpaController.edit(facultad);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        } */       
     }
     
     @Override
     public void Eliminar() {
-        /*try {
+        try {
             entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
-            FacultadJpaController facultadJpaController = new FacultadJpaController(entityManagerFactory);
-            facultadJpaController.destroy();
+            FacultadJpaController facultadJpaController =new FacultadJpaController(entityManagerFactory);
+            facultad.setId(facultad.getId());
+            facultadJpaController.destroy(facultad.getId());            
         } catch (NonexistentEntityException ex) {
             ex.printStackTrace();
-        }*/
+        } catch (IllegalOrphanException ex) {
+            Logger.getLogger(PFacultad.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
