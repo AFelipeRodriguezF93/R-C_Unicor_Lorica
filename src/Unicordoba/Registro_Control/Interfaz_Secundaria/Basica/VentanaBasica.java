@@ -6,7 +6,6 @@
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Basica;
 
 import java.awt.Component;
-import static java.util.Collections.list;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -14,12 +13,11 @@ import javax.swing.table.DefaultTableModel;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
-import static org.eclipse.persistence.jpa.jpql.utility.CollectionTools.list;
 
 /**
  *
  * @author AndresFelipe
- * 
+ * @param <T> * 
  */
 public class VentanaBasica<T> extends javax.swing.JInternalFrame {
 

@@ -6,12 +6,19 @@
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Programa;
 
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.ProgramaJpaController;
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.IllegalOrphanException;
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.NonexistentEntityException;
+import Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Programa;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.Estado_Ventana;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Facultad.PFacultad;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -31,6 +38,17 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
      */
     public PPrograma() {
         initComponents();
+        CarcarCBUniversidades();
+    }
+    
+    public void CarcarCBUniversidades(){
+        
+        entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+        entityManager = entityManagerFactory.createEntityManager();
+        Iterator iterator = entityManager.createNamedQuery("Facultad.findAll").getResultList().iterator();
+        while (iterator.hasNext()){
+            this.CBFacultades.addItem(((Facultad)iterator.next()));
+        }
     }
 
     /**
@@ -137,7 +155,7 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public void Guardar(Estado_Ventana estado_Ventana) {
-        try {
+        /*try {
             entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
             ProgramaJpaController programaJpaController = new ProgramaJpaController(entityManagerFactory);
             programa.setNombre(TFieldNombrePrograma.getText());
@@ -151,22 +169,31 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-        }  
+        }  */
     }
 
     @Override
     public void Eliminar() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+            ProgramaJpaController programaJpaController =new ProgramaJpaController(entityManagerFactory);
+            //facultad.setId(facultad.getId());
+            programaJpaController.destroy(programa.getId());            
+        } catch (NonexistentEntityException ex) {
+            ex.printStackTrace();
+        } catch (IllegalOrphanException ex) {
+            Logger.getLogger(PFacultad.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public void ActivarEdicion() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void Nuevo() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        programa = new Programa();
     }
 
     @Override

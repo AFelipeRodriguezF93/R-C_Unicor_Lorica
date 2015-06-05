@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 /**
  *
@@ -44,10 +45,12 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
         
         entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
         entityManager = entityManagerFactory.createEntityManager();
-        Iterator iterator = entityManager.createNamedQuery("Universidad.findAll").getResultList().iterator();
-        while (iterator.hasNext()){
-            this.CBUniversidad.addItem(((Universidad)iterator.next()));
-        }
+        Query query = entityManager.createNamedQuery("Universidad.findAll");
+        
+        //Iterator iterator = entityManager.createNamedQuery("Universidad.findAll").getResultList().iterator();
+        //while (query.){
+        //    this.CBUniversidad.addItem(((Universidad)iterator.next()));
+        //}
     }
  
     /**
@@ -158,7 +161,7 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
             entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
             FacultadJpaController facultadJpaController = new FacultadJpaController(entityManagerFactory);
             facultad.setNombre(TFieldNombreFacultad.getText());
-            //facultad.setUniversidadid(CBUniversidad);
+            facultad.setUniversidadid((Universidad) CBUniversidad.getSelectedItem());
             facultad.setDecano(TFieldNombreDecano.getText());
             facultad.setUbicacion(TFieldUbicacion.getText());          
                         
@@ -178,7 +181,7 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
         try {
             entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
             FacultadJpaController facultadJpaController =new FacultadJpaController(entityManagerFactory);
-            facultad.setId(facultad.getId());
+            //facultad.setId(facultad.getId());
             facultadJpaController.destroy(facultad.getId());            
         } catch (NonexistentEntityException ex) {
             ex.printStackTrace();
@@ -199,13 +202,13 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public void Seleccionar(Vector vectorSeleccion) {
-        entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+        /*entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
         FacultadJpaController facultadJpaController = new FacultadJpaController(entityManagerFactory);
         facultad = facultadJpaController.findFacultad(Integer.valueOf(vectorSeleccion.get(0).toString()));
         CBUniversidad.setSelectedItem(facultad.getUniversidadid());
         TFieldNombreFacultad.setText(facultad.getNombre());
         TFieldNombreDecano.setText(facultad.getDecano());
-        TFieldUbicacion.setText(facultad.getUbicacion());     
+        TFieldUbicacion.setText(facultad.getUbicacion());   */  
     }
 
     @Override
