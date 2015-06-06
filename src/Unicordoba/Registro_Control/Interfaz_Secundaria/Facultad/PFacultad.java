@@ -41,16 +41,14 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
         CarcarCBUniversidades();        
     }
     
-    public void CarcarCBUniversidades(){
-        
+    public void CarcarCBUniversidades(){        
         entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
         entityManager = entityManagerFactory.createEntityManager();
-        Query query = entityManager.createNamedQuery("Universidad.findAll");
         
-        //Iterator iterator = entityManager.createNamedQuery("Universidad.findAll").getResultList().iterator();
-        //while (query.){
-        //    this.CBUniversidad.addItem(((Universidad)iterator.next()));
-        //}
+        Iterator iterator = entityManager.createNamedQuery("Universidad.findAll").getResultList().iterator();
+        while (iterator.hasNext()){
+            this.CBUniversidad.addItem(iterator.next());
+        }
     }
  
     /**

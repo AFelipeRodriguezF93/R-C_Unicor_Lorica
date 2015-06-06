@@ -253,8 +253,8 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
                 }
                 BotonActivarEdicion.setEnabled(true);
                 BotonEliminar.setEnabled(true);
-                BotonGuardar.setEnabled(false);
-                BotonNuevo.setEnabled(true);
+                BotonGuardar.setEnabled(true);
+                BotonNuevo.setEnabled(false);
             } else if (estado_Ventana.equals(Estado_Ventana.ELIMINADO)) {
                 for (int i = 0; i < ((JPanel) panelEdicion).getComponentCount(); i++) {
                     Component component = ((JPanel) panelEdicion).getComponents()[i];

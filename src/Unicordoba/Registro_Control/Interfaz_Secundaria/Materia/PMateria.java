@@ -7,9 +7,11 @@ package Unicordoba.Registro_Control.Interfaz_Secundaria.Materia;
 
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.MateriaJpaController;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Materia;
+import Unicordoba.Registro_Control.Base_de_Datos.Entity.Programa;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.Estado_Ventana;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 import javax.persistence.EntityManager;
@@ -31,6 +33,16 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
      */
     public PMateria() {
         initComponents();
+        CarcarCBUniversidades();
+    }
+    
+    public void CarcarCBUniversidades(){        
+        entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+        entityManager = entityManagerFactory.createEntityManager();
+        Iterator iterator = entityManager.createNamedQuery("Programa.findAll").getResultList().iterator();
+        while (iterator.hasNext()){
+            this.CBListaProgramas.addItem(((Programa)iterator.next()));
+        }
     }
 
     /**
