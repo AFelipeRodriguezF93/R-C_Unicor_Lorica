@@ -177,13 +177,11 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
         try {
             entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
             ProgramaJpaController programaJpaController =new ProgramaJpaController(entityManagerFactory);
-            //facultad.setId(facultad.getId());
-            programaJpaController.destroy(programa.getId());            
+            programaJpaController.destroy(Integer.valueOf(TFieldCodigo.getText()));            
         } catch (NonexistentEntityException ex) {
-            ex.printStackTrace();
         } catch (IllegalOrphanException ex) {
-            Logger.getLogger(PFacultad.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Logger.getLogger(PPrograma.class.getName()).log(Level.SEVERE, null, ex);
+        } 
     }
 
     @Override

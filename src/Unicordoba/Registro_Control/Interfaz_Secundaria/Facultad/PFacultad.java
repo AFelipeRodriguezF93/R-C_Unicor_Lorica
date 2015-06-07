@@ -176,16 +176,7 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
     
     @Override
     public void Eliminar() {
-        try {
-            entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
-            FacultadJpaController facultadJpaController =new FacultadJpaController(entityManagerFactory);
-            //facultad.setId(facultad.getId());
-            facultadJpaController.destroy(facultad.getId());            
-        } catch (NonexistentEntityException ex) {
-            ex.printStackTrace();
-        } catch (IllegalOrphanException ex) {
-            Logger.getLogger(PFacultad.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
     }
 
     @Override
@@ -200,13 +191,7 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public void Seleccionar(Vector vectorSeleccion) {
-        /*entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
-        FacultadJpaController facultadJpaController = new FacultadJpaController(entityManagerFactory);
-        facultad = facultadJpaController.findFacultad(Integer.valueOf(vectorSeleccion.get(0).toString()));
-        CBUniversidad.setSelectedItem(facultad.getUniversidadid());
-        TFieldNombreFacultad.setText(facultad.getNombre());
-        TFieldNombreDecano.setText(facultad.getDecano());
-        TFieldUbicacion.setText(facultad.getUbicacion());   */  
+
     }
 
     @Override
