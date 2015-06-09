@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="LNombre" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="LApellidos" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="LCodigo" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="LCorreo" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="LIdentificacion" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="LTelefono" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="LCodigoHuella" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="LClave" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="TFieldCidigoHuella" max="32767" attributes="0"/>
+                  <Component id="TFieldApellidos" max="32767" attributes="0"/>
+                  <Component id="TFieldCodigo" alignment="1" max="32767" attributes="0"/>
+                  <Component id="TFieldCorreo" alignment="1" max="32767" attributes="0"/>
+                  <Component id="TFieldIdentificacion" alignment="1" max="32767" attributes="0"/>
+                  <Component id="TFieldTelefono" alignment="1" max="32767" attributes="0"/>
+                  <Component id="TFieldNombre" max="32767" attributes="0"/>
+                  <Component id="TFieldClave" pref="289" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TFieldNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TFieldApellidos" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TFieldCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TFieldCorreo" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LIdentificacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TFieldIdentificacion" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TFieldTelefono" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="TFieldCidigoHuella" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="LCodigoHuella" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LClave" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TFieldClave" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="LNombre">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nombres:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LApellidos">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Apellidos:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LCodigo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Codigo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LCorreo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Correo:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LIdentificacion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Identificaci&#xf3;n:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LTelefono">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Telefono"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TFieldNombre">
+    </Component>
+    <Component class="javax.swing.JTextField" name="TFieldApellidos">
+    </Component>
+    <Component class="javax.swing.JTextField" name="TFieldCodigo">
+    </Component>
+    <Component class="javax.swing.JTextField" name="TFieldCorreo">
+    </Component>
+    <Component class="javax.swing.JTextField" name="TFieldIdentificacion">
+    </Component>
+    <Component class="javax.swing.JTextField" name="TFieldTelefono">
+    </Component>
+    <Component class="javax.swing.JTextField" name="TFieldCidigoHuella">
+    </Component>
+    <Component class="javax.swing.JLabel" name="LCodigoHuella">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Codigo Huella:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="LClave">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Clave:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TFieldClave">
+    </Component>
+  </SubComponents>
+</Form>

@@ -5,8 +5,6 @@
  */
 package Unicordoba.Registro_Control.Base_de_Datos.Entity;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -23,7 +21,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -43,8 +40,6 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Materia.findByCreditos", query = "SELECT m FROM Materia m WHERE m.creditos = :creditos"),
     @NamedQuery(name = "Materia.findByCodigo", query = "SELECT m FROM Materia m WHERE m.codigo = :codigo")})
 public class Materia implements Serializable {
-    @Transient
-    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -91,9 +86,7 @@ public class Materia implements Serializable {
     }
 
     public void setId(Integer id) {
-        Integer oldId = this.id;
         this.id = id;
-        changeSupport.firePropertyChange("id", oldId, id);
     }
 
     public String getNombre() {
@@ -101,9 +94,7 @@ public class Materia implements Serializable {
     }
 
     public void setNombre(String nombre) {
-        String oldNombre = this.nombre;
         this.nombre = nombre;
-        changeSupport.firePropertyChange("nombre", oldNombre, nombre);
     }
 
     public Integer getSemestre() {
@@ -111,9 +102,7 @@ public class Materia implements Serializable {
     }
 
     public void setSemestre(Integer semestre) {
-        Integer oldSemestre = this.semestre;
         this.semestre = semestre;
-        changeSupport.firePropertyChange("semestre", oldSemestre, semestre);
     }
 
     public String getContenido() {
@@ -121,9 +110,7 @@ public class Materia implements Serializable {
     }
 
     public void setContenido(String contenido) {
-        String oldContenido = this.contenido;
         this.contenido = contenido;
-        changeSupport.firePropertyChange("contenido", oldContenido, contenido);
     }
 
     public Integer getCreditos() {
@@ -131,9 +118,7 @@ public class Materia implements Serializable {
     }
 
     public void setCreditos(Integer creditos) {
-        Integer oldCreditos = this.creditos;
         this.creditos = creditos;
-        changeSupport.firePropertyChange("creditos", oldCreditos, creditos);
     }
 
     public int getCodigo() {
@@ -141,9 +126,7 @@ public class Materia implements Serializable {
     }
 
     public void setCodigo(int codigo) {
-        int oldCodigo = this.codigo;
         this.codigo = codigo;
-        changeSupport.firePropertyChange("codigo", oldCodigo, codigo);
     }
 
     @XmlTransient
@@ -205,14 +188,6 @@ public class Materia implements Serializable {
     @Override
     public String toString() {
         return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Materia[ id=" + id + " ]";
-    }
-
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        changeSupport.addPropertyChangeListener(listener);
-    }
-
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        changeSupport.removePropertyChangeListener(listener);
     }
     
 }
