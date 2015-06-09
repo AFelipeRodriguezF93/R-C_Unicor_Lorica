@@ -5,18 +5,22 @@
  */
 package Unicordoba.Registro_Control.Interfaz_Principal;
 
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.VentanaBasica;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Docente.PDocente;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Facultad.PFacultad;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Materia.PMateria;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Programa.PPrograma;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Docente.MDocente;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Facultad.MFacultad;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Materia.MMateria;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Programa.MPrograma;
+
+
+import java.awt.EventQueue;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -142,7 +146,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(PanelAdministrarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelAdministrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BotonRegistrarMateria, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                    .addComponent(BotonRegistrarMateria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonRegistrarFacultad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonRegistrarPrograma, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonRegistrarDocente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -163,7 +167,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(PanelConexionLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BotonNuevaConexion)
-                .addContainerGap(746, Short.MAX_VALUE))
+                .addContainerGap(1642, Short.MAX_VALUE))
         );
         PanelConexionLayout.setVerticalGroup(
             PanelConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,7 +208,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addComponent(BotonReportesGeneral)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ReportesProgramas)
-                .addContainerGap(565, Short.MAX_VALUE))
+                .addContainerGap(1461, Short.MAX_VALUE))
         );
         PanelReportesLayout.setVerticalGroup(
             PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,32 +268,52 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ReportesProgramasActionPerformed
 
     private void BotonRegistrarFacultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarFacultadActionPerformed
-        VentanaBasica ventanaBasica;
-        ventanaBasica = new VentanaBasica(new PFacultad());
-        FramePrincipal.getSingleton().AddVentana(ventanaBasica);        
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JInternalFrame internalFrame = new JInternalFrame();
+                internalFrame.setContentPane(new MFacultad());
+                FramePrincipal.getSingleton().AddVentana(internalFrame);
+                internalFrame.pack();
+            }
+        });
     }//GEN-LAST:event_BotonRegistrarFacultadActionPerformed
 
     private void BotonRegistrarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarProgramaActionPerformed
-        VentanaBasica ventanaBasica;
-        ventanaBasica = new VentanaBasica(new PPrograma());
-        FramePrincipal.getSingleton().AddVentana(ventanaBasica);
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JInternalFrame internalFrame = new JInternalFrame();
+                internalFrame.setContentPane(new MPrograma());
+                FramePrincipal.getSingleton().AddVentana(internalFrame);
+                internalFrame.pack();
+            }
+        });
     }//GEN-LAST:event_BotonRegistrarProgramaActionPerformed
 
     private void BotonRegistrarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarMateriaActionPerformed
-        VentanaBasica ventanaBasica;
-        ventanaBasica = new VentanaBasica(new PMateria());
-        FramePrincipal.getSingleton().AddVentana(ventanaBasica);
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JInternalFrame internalFrame = new JInternalFrame();
+                internalFrame.setContentPane(new MMateria());
+                FramePrincipal.getSingleton().AddVentana(internalFrame);
+                internalFrame.pack();
+            }
+        });
     }//GEN-LAST:event_BotonRegistrarMateriaActionPerformed
 
     private void BotonRegistrarDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarDocenteActionPerformed
-        VentanaBasica ventanaBasica;
-        ventanaBasica = new VentanaBasica(new PDocente());
-        FramePrincipal.getSingleton().AddVentana(ventanaBasica);
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JInternalFrame internalFrame = new JInternalFrame();
+                internalFrame.setContentPane(new MDocente());
+                FramePrincipal.getSingleton().AddVentana(internalFrame);
+                internalFrame.pack();
+            }
+        });
     }//GEN-LAST:event_BotonRegistrarDocenteActionPerformed
 
     private static FramePrincipal framePrincipal = null;
     
-    public void AddVentana(JInternalFrame internalFrame ) {
+    public void AddVentana(JInternalFrame internalFrame) {
         Escritorio.add(internalFrame);
         internalFrame.setVisible(true);
     }

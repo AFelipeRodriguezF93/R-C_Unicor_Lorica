@@ -5,6 +5,8 @@
  */
 package Unicordoba.Registro_Control.Base_de_Datos.Entity;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -20,6 +22,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -37,6 +40,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Programa.findByNombre", query = "SELECT p FROM Programa p WHERE p.nombre = :nombre"),
     @NamedQuery(name = "Programa.findByJefePrograma", query = "SELECT p FROM Programa p WHERE p.jefePrograma = :jefePrograma")})
 public class Programa implements Serializable {
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -77,7 +82,9 @@ public class Programa implements Serializable {
     }
 
     public void setId(Integer id) {
+        Integer oldId = this.id;
         this.id = id;
+        changeSupport.firePropertyChange("id", oldId, id);
     }
 
     public int getCodigo() {
@@ -85,7 +92,9 @@ public class Programa implements Serializable {
     }
 
     public void setCodigo(int codigo) {
+        int oldCodigo = this.codigo;
         this.codigo = codigo;
+        changeSupport.firePropertyChange("codigo", oldCodigo, codigo);
     }
 
     public String getNombre() {
@@ -93,7 +102,9 @@ public class Programa implements Serializable {
     }
 
     public void setNombre(String nombre) {
+        String oldNombre = this.nombre;
         this.nombre = nombre;
+        changeSupport.firePropertyChange("nombre", oldNombre, nombre);
     }
 
     public String getJefePrograma() {
@@ -101,7 +112,9 @@ public class Programa implements Serializable {
     }
 
     public void setJefePrograma(String jefePrograma) {
+        String oldJefePrograma = this.jefePrograma;
         this.jefePrograma = jefePrograma;
+        changeSupport.firePropertyChange("jefePrograma", oldJefePrograma, jefePrograma);
     }
 
     public Facultad getFacultadid() {
@@ -109,7 +122,9 @@ public class Programa implements Serializable {
     }
 
     public void setFacultadid(Facultad facultadid) {
+        Facultad oldFacultadid = this.facultadid;
         this.facultadid = facultadid;
+        changeSupport.firePropertyChange("facultadid", oldFacultadid, facultadid);
     }
 
     @XmlTransient
@@ -144,6 +159,14 @@ public class Programa implements Serializable {
     @Override
     public String toString() {
         return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Programa[ id=" + id + " ]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }

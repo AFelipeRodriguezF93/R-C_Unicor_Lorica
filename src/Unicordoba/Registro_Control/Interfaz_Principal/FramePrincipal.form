@@ -95,7 +95,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="BotonRegistrarMateria" alignment="0" pref="78" max="32767" attributes="0"/>
+                          <Component id="BotonRegistrarMateria" alignment="0" max="32767" attributes="0"/>
                           <Component id="BotonRegistrarFacultad" alignment="0" max="32767" attributes="0"/>
                           <Component id="BotonRegistrarPrograma" alignment="1" max="32767" attributes="0"/>
                           <Component id="BotonRegistrarDocente" max="32767" attributes="0"/>
@@ -208,7 +208,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="BotonNuevaConexion" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="746" max="32767" attributes="0"/>
+                      <EmptySpace pref="1642" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -247,7 +247,7 @@
                       <Component id="BotonReportesGeneral" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="ReportesProgramas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="565" max="32767" attributes="0"/>
+                      <EmptySpace pref="1461" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

@@ -5,6 +5,8 @@
  */
 package Unicordoba.Registro_Control.Base_de_Datos.Entity;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -22,6 +24,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -36,6 +39,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Docente.findAll", query = "SELECT d FROM Docente d"),
     @NamedQuery(name = "Docente.findByIdDocente", query = "SELECT d FROM Docente d WHERE d.idDocente = :idDocente")})
 public class Docente implements Serializable {
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,7 +76,9 @@ public class Docente implements Serializable {
     }
 
     public void setIdDocente(Integer idDocente) {
+        Integer oldIdDocente = this.idDocente;
         this.idDocente = idDocente;
+        changeSupport.firePropertyChange("idDocente", oldIdDocente, idDocente);
     }
 
     @XmlTransient
@@ -88,7 +95,9 @@ public class Docente implements Serializable {
     }
 
     public void setFacultadid(Facultad facultadid) {
+        Facultad oldFacultadid = this.facultadid;
         this.facultadid = facultadid;
+        changeSupport.firePropertyChange("facultadid", oldFacultadid, facultadid);
     }
 
     public InformacionBasica getInformacionBasicaId() {
@@ -96,7 +105,9 @@ public class Docente implements Serializable {
     }
 
     public void setInformacionBasicaId(InformacionBasica informacionBasicaId) {
+        InformacionBasica oldInformacionBasicaId = this.informacionBasicaId;
         this.informacionBasicaId = informacionBasicaId;
+        changeSupport.firePropertyChange("informacionBasicaId", oldInformacionBasicaId, informacionBasicaId);
     }
 
     public InformacionDeSeguridad getInformacionDeSeguridadidI() {
@@ -104,7 +115,9 @@ public class Docente implements Serializable {
     }
 
     public void setInformacionDeSeguridadidI(InformacionDeSeguridad informacionDeSeguridadidI) {
+        InformacionDeSeguridad oldInformacionDeSeguridadidI = this.informacionDeSeguridadidI;
         this.informacionDeSeguridadidI = informacionDeSeguridadidI;
+        changeSupport.firePropertyChange("informacionDeSeguridadidI", oldInformacionDeSeguridadidI, informacionDeSeguridadidI);
     }
 
     @XmlTransient
@@ -139,6 +152,14 @@ public class Docente implements Serializable {
     @Override
     public String toString() {
         return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Docente[ idDocente=" + idDocente + " ]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }

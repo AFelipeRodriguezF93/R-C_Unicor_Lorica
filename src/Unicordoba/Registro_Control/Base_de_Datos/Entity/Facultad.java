@@ -5,6 +5,8 @@
  */
 package Unicordoba.Registro_Control.Base_de_Datos.Entity;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -20,6 +22,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -38,6 +41,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Facultad.findByUbicacion", query = "SELECT f FROM Facultad f WHERE f.ubicacion = :ubicacion"),
     @NamedQuery(name = "Facultad.findByCodigo", query = "SELECT f FROM Facultad f WHERE f.codigo = :codigo")})
 public class Facultad implements Serializable {
+    @Transient
+    private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -82,7 +87,9 @@ public class Facultad implements Serializable {
     }
 
     public void setId(Integer id) {
+        Integer oldId = this.id;
         this.id = id;
+        changeSupport.firePropertyChange("id", oldId, id);
     }
 
     public String getNombre() {
@@ -90,7 +97,9 @@ public class Facultad implements Serializable {
     }
 
     public void setNombre(String nombre) {
+        String oldNombre = this.nombre;
         this.nombre = nombre;
+        changeSupport.firePropertyChange("nombre", oldNombre, nombre);
     }
 
     public String getDecano() {
@@ -98,7 +107,9 @@ public class Facultad implements Serializable {
     }
 
     public void setDecano(String decano) {
+        String oldDecano = this.decano;
         this.decano = decano;
+        changeSupport.firePropertyChange("decano", oldDecano, decano);
     }
 
     public String getUbicacion() {
@@ -106,7 +117,9 @@ public class Facultad implements Serializable {
     }
 
     public void setUbicacion(String ubicacion) {
+        String oldUbicacion = this.ubicacion;
         this.ubicacion = ubicacion;
+        changeSupport.firePropertyChange("ubicacion", oldUbicacion, ubicacion);
     }
 
     public Integer getCodigo() {
@@ -114,7 +127,9 @@ public class Facultad implements Serializable {
     }
 
     public void setCodigo(Integer codigo) {
+        Integer oldCodigo = this.codigo;
         this.codigo = codigo;
+        changeSupport.firePropertyChange("codigo", oldCodigo, codigo);
     }
 
     @XmlTransient
@@ -140,7 +155,9 @@ public class Facultad implements Serializable {
     }
 
     public void setUniversidadid(Universidad universidadid) {
+        Universidad oldUniversidadid = this.universidadid;
         this.universidadid = universidadid;
+        changeSupport.firePropertyChange("universidadid", oldUniversidadid, universidadid);
     }
 
     @Override
@@ -166,6 +183,14 @@ public class Facultad implements Serializable {
     @Override
     public String toString() {
         return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad[ id=" + id + " ]";
+    }
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.addPropertyChangeListener(listener);
+    }
+
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        changeSupport.removePropertyChangeListener(listener);
     }
     
 }
