@@ -6,6 +6,9 @@
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Materia;
 
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.MateriaJpaController;
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.ProgramaJpaController;
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.IllegalOrphanException;
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.NonexistentEntityException;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Materia;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Programa;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.Estado_Ventana;
@@ -23,10 +26,6 @@ import javax.persistence.Persistence;
  * @author AndresFelipe
  */
 public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
-
-    private EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
-    Materia materia = new Materia();
     
     /**
      * Creates new form PMateria
@@ -38,10 +37,9 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
     
     public void CarcarCBUniversidades(){        
         entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
-        entityManager = entityManagerFactory.createEntityManager();
-        Iterator iterator = entityManager.createNamedQuery("Programa.findAll").getResultList().iterator();
-        while (iterator.hasNext()){
-            this.CBListaProgramas.addItem(((Programa)iterator.next()));
+        List<Programa> list = new ProgramaJpaController(entityManagerFactory).findProgramaEntities();
+        for (Programa list1 : list) {
+            CBListaProgramas.addItem(list1);
         }
     }
 
@@ -53,7 +51,6 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         LNombreMateria = new javax.swing.JLabel();
         LCodigo = new javax.swing.JLabel();
@@ -69,124 +66,98 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
         CBCantidadCreditos = new javax.swing.JComboBox();
         CBListaProgramas = new javax.swing.JComboBox();
 
-        setLayout(new java.awt.GridBagLayout());
-
         LNombreMateria.setText("Nombre de la Materia:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(25, 10, 0, 0);
-        add(LNombreMateria, gridBagConstraints);
 
         LCodigo.setText("Codigo:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
-        add(LCodigo, gridBagConstraints);
 
         LSemestre.setText("Semestre:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
-        add(LSemestre, gridBagConstraints);
 
         LContenido.setText("Contenido:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
-        add(LContenido, gridBagConstraints);
 
         LCantidadCreditos.setText("Cantidad de Credito:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 133, 0, 0);
-        add(LCantidadCreditos, gridBagConstraints);
 
         LProgramaAcedimico.setText("Programa Academico:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
-        add(LProgramaAcedimico, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(22, 18, 0, 10);
-        add(TFieldNombreMateria, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 250;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 18, 0, 10);
-        add(TFieldCodigo, gridBagConstraints);
 
         TAreaContenido.setColumns(20);
         TAreaContenido.setRows(5);
         ScrollPanelContenido.setViewportView(TAreaContenido);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 357;
-        gridBagConstraints.ipady = 73;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(6, 10, 21, 10);
-        add(ScrollPanelContenido, gridBagConstraints);
-
         CBSemestre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primer Semestre", "Segundo Semestre", "Tercer Semestre", "Cuarto Semestre", "Quinto Semestre", "Sexto Semestre", "Septimo Semestre", "Octavo Semestre", "Noveno Semestre", "Decimo Semestre" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 13;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 146, 0, 10);
-        add(CBSemestre, gridBagConstraints);
+        CBSemestre.setSelectedIndex(1);
 
         CBCantidadCreditos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6" }));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
-        add(CBCantidadCreditos, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 228;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 18, 0, 10);
-        add(CBListaProgramas, gridBagConstraints);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LNombreMateria)
+                            .addComponent(LCodigo))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TFieldNombreMateria)
+                            .addComponent(TFieldCodigo)))
+                    .addComponent(ScrollPanelContenido)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LSemestre)
+                            .addComponent(LProgramaAcedimico)
+                            .addComponent(LContenido))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(99, 99, 99)
+                                .addComponent(LCantidadCreditos)
+                                .addGap(18, 18, 18)
+                                .addComponent(CBCantidadCreditos, 0, 45, Short.MAX_VALUE))
+                            .addComponent(CBListaProgramas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CBSemestre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LNombreMateria))
+                    .addComponent(TFieldNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LCodigo))
+                    .addComponent(TFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LSemestre))
+                    .addComponent(CBSemestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LProgramaAcedimico))
+                    .addComponent(CBListaProgramas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(CBCantidadCreditos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LCantidadCreditos))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LContenido)))
+                .addGap(6, 6, 6)
+                .addComponent(ScrollPanelContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -206,29 +177,70 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
     private javax.swing.JTextField TFieldNombreMateria;
     // End of variables declaration//GEN-END:variables
 
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
+    private Materia materia = null;
+    
     @Override
     public void Guardar(Estado_Ventana estado_Ventana ) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+            
+            materia.setNombre(TFieldNombreMateria.getText());
+            materia.setCodigo(Integer.valueOf(TFieldCodigo.getText())); 
+            materia.setSemestre(Integer.valueOf(CBSemestre.getSelectedIndex()));
+            materia.setContenido(TAreaContenido.getText());
+            materia.setCreditos(Integer.valueOf(CBCantidadCreditos.getSelectedItem().toString()));
+            MateriaJpaController materiaJpaController = new MateriaJpaController(entityManagerFactory);
+            
+            if (estado_Ventana.equals(Estado_Ventana.NUEVO)) {
+                materiaJpaController.create(materia);
+            } else {
+                materia.setId(materia.getId());
+                materiaJpaController.edit(materia);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
     public void Eliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+            MateriaJpaController materiaJpaController = new MateriaJpaController(entityManagerFactory);
+            materiaJpaController.destroy(materia.getId());          
+
+        } catch (NonexistentEntityException ex) {
+            ex.printStackTrace();
+        } catch (IllegalOrphanException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
     public void ActivarEdicion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void Nuevo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        materia = new Materia();
     }
 
     @Override
     public void Seleccionar(Vector vectorSeleccion) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+        MateriaJpaController materiaJpaController = new  MateriaJpaController(entityManagerFactory);
+        
+        
+        this.materia = materiaJpaController.findMateria(Integer.valueOf(vectorSeleccion.get(0).toString()));
+        TFieldNombreMateria.setText(materia.getNombre());
+        TFieldCodigo.setText(materia.getCodigo()+"");
+        CBSemestre.setSelectedItem(materia.getSemestre());
+        TAreaContenido.setText(materia.getContenido());
+        CBCantidadCreditos.setSelectedItem(materia.getCreditos());
     }
 
     @Override
@@ -239,9 +251,10 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
         List<Object[]> list = new ArrayList();
         for (Materia materia : materiaJpaController.findMateriaEntities()){
             list.add(new Object[]{
+                materia.getId(),
                 materia.getNombre(),
                 materia.getCodigo(),
-                materia.getSemestre(),
+                materia.getSemestre(),                
                 materia.getCreditos(),
                 materia.getContenido()               
             });
@@ -251,6 +264,6 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public String[] getNombreDeColumnas() {
-        return new String[]{"Nombre", "Codigo", "Semestre","Credito","Contenido"};
+        return new String[]{"ID", "Nombre", "Codigo", "Semestre","Credito","Contenido"};
     }
 }

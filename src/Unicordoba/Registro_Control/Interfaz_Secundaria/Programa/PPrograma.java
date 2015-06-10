@@ -5,6 +5,7 @@
  */
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Programa;
 
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.FacultadJpaController;
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.ProgramaJpaController;
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.IllegalOrphanException;
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.NonexistentEntityException;
@@ -28,11 +29,7 @@ import javax.persistence.Persistence;
  * @author AndresFelipe
  */
 public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
-
-    private EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
-    Programa programa = new Programa();
-    
+   
     /**
      * Creates new form PPrograma
      */
@@ -41,13 +38,11 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
         CarcarCBUniversidades();
     }
     
-    public void CarcarCBUniversidades(){
-        
+    public void CarcarCBUniversidades(){        
         entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
-        entityManager = entityManagerFactory.createEntityManager();
-        Iterator iterator = entityManager.createNamedQuery("Facultad.findAll").getResultList().iterator();
-        while (iterator.hasNext()){
-            this.CBFacultades.addItem(((Facultad)iterator.next()));
+        List<Facultad> list = new FacultadJpaController(entityManagerFactory).findFacultadEntities();
+        for (Facultad list1 : list) {
+            CBFacultades.addItem(list1);
         }
     }
 
@@ -59,7 +54,6 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         LFaculdad = new javax.swing.JLabel();
         LNombrePrograma = new javax.swing.JLabel();
@@ -70,75 +64,62 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
         TFieldNomJefePrograma = new javax.swing.JTextField();
         CBFacultades = new javax.swing.JComboBox();
 
-        setLayout(new java.awt.GridBagLayout());
-
         LFaculdad.setText("Faculdad:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
-        add(LFaculdad, gridBagConstraints);
 
         LNombrePrograma.setText("Nombre del Programa:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(27, 10, 0, 0);
-        add(LNombrePrograma, gridBagConstraints);
 
         LCodigo.setText("Codigo:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
-        add(LCodigo, gridBagConstraints);
 
         LNomJefePrograma.setText("Nombre jefe del programa:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
-        add(LNomJefePrograma, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 235;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 10, 0, 10);
-        add(TFieldNombrePrograma, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 235;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
-        add(TFieldCodigo, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 235;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 10, 27, 10);
-        add(TFieldNomJefePrograma, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 213;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
-        add(CBFacultades, gridBagConstraints);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LCodigo)
+                    .addComponent(LNombrePrograma)
+                    .addComponent(LFaculdad)
+                    .addComponent(LNomJefePrograma))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TFieldNomJefePrograma)
+                    .addComponent(CBFacultades, 0, 241, Short.MAX_VALUE)
+                    .addComponent(TFieldNombrePrograma)
+                    .addComponent(TFieldCodigo))
+                .addGap(10, 10, 10))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LNombrePrograma))
+                    .addComponent(TFieldNombrePrograma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LCodigo))
+                    .addComponent(TFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LFaculdad))
+                    .addComponent(CBFacultades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LNomJefePrograma))
+                    .addComponent(TFieldNomJefePrograma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -153,14 +134,20 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
     private javax.swing.JTextField TFieldNombrePrograma;
     // End of variables declaration//GEN-END:variables
 
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
+    private Programa programa = null;
+    
     @Override
     public void Guardar(Estado_Ventana estado_Ventana) {
-        /*try {
+        try {
             entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
-            ProgramaJpaController programaJpaController = new ProgramaJpaController(entityManagerFactory);
+            
             programa.setNombre(TFieldNombrePrograma.getText());
-              
-                        
+            programa.setCodigo(Integer.valueOf(TFieldCodigo.getText())); 
+            programa.setFacultadid((Facultad) CBFacultades.getSelectedItem());
+            programa.setJefePrograma(TFieldNomJefePrograma.getText());
+            ProgramaJpaController programaJpaController = new ProgramaJpaController(entityManagerFactory);
             if (estado_Ventana.equals(Estado_Ventana.NUEVO)) {
                 programaJpaController.create(programa);
             } else {
@@ -169,19 +156,22 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
             }
         } catch (Exception ex) {
             ex.printStackTrace();
-        }  */
+        }
+
     }
 
     @Override
     public void Eliminar() {
         try {
             entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
-            ProgramaJpaController programaJpaController =new ProgramaJpaController(entityManagerFactory);
-            programaJpaController.destroy(Integer.valueOf(TFieldCodigo.getText()));            
+            ProgramaJpaController programaJpaController = new ProgramaJpaController(entityManagerFactory);
+            programaJpaController.destroy(programa.getId());          
+
         } catch (NonexistentEntityException ex) {
+            ex.printStackTrace();
         } catch (IllegalOrphanException ex) {
-            Logger.getLogger(PPrograma.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+            ex.printStackTrace();
+        }
     }
 
     @Override
@@ -196,7 +186,14 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public void Seleccionar(Vector vectorSeleccion) {
-
+        entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+        ProgramaJpaController programaJpaController = new ProgramaJpaController(entityManagerFactory);
+        
+        this.programa = programaJpaController.findPrograma(Integer.valueOf(vectorSeleccion.get(0).toString()));
+        TFieldNombrePrograma.setText(programa.getNombre());
+        TFieldCodigo.setText(programa.getCodigo()+"");
+        CBFacultades.setSelectedItem(programa.getFacultadid().getNombre());
+        TFieldNomJefePrograma.setText(programa.getJefePrograma());              
     }
 
     @Override
@@ -207,9 +204,10 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
         List<Object[]> list = new ArrayList();
         for (Programa programa : programaJpaController.findProgramaEntities()) {
             list.add(new Object[]{
-                programa.getFacultadid().getNombre(),
-                programa.getCodigo(),
+                programa.getId(),
                 programa.getNombre(), 
+                programa.getCodigo(),                
+                programa.getFacultadid().getNombre(),
                 programa.getJefePrograma()
             });
         }
@@ -218,6 +216,6 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public String[] getNombreDeColumnas() {
-        return new String[]{"Faculdad", "Codigo", "Nombre","Jefe de Progama",};
+        return new String[]{"ID", "Nombre", "Codigo", "Faculdad",  "Jefe de Progama",};
     }
 }

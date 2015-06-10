@@ -292,7 +292,7 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
                         ((JTextField) component).setText("");
                     }
                     if (component instanceof JLabel) {
-                        ((JTextField) component).setText("");
+                       // ((JTextField) component).setText("");
                     }
                     component.setEnabled(true);
                 }
