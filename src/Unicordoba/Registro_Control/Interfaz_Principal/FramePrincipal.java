@@ -7,8 +7,11 @@ package Unicordoba.Registro_Control.Interfaz_Principal;
 
 import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaDos.VentanaIniciarSesion;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno.VentanaBasica;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Cursos.PCursos;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Docente.PDocente;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Estudiantes.PEstudiantes;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Facultad.PFacultad;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.Horario.PHorario;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Materia.PMateria;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Programa.PPrograma;
 import javax.swing.JInternalFrame;
@@ -133,16 +136,31 @@ public class FramePrincipal extends javax.swing.JFrame {
         BotonRegistrarEstudiante.setText("Reg. Estudiantes");
         BotonRegistrarEstudiante.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BotonRegistrarEstudiante.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BotonRegistrarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarEstudianteActionPerformed(evt);
+            }
+        });
 
         BotonRegistrarCurso.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Curso-O.png"))); // NOI18N
         BotonRegistrarCurso.setText("Reg. Cursos");
         BotonRegistrarCurso.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BotonRegistrarCurso.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BotonRegistrarCurso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarCursoActionPerformed(evt);
+            }
+        });
 
         BotonRegistrarUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Estudiante-O.png"))); // NOI18N
-        BotonRegistrarUsuarios.setText("Reg. Usuarios");
+        BotonRegistrarUsuarios.setText("Reg. Horario");
         BotonRegistrarUsuarios.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BotonRegistrarUsuarios.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        BotonRegistrarUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonRegistrarUsuariosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelAdministrarLayout = new javax.swing.GroupLayout(PanelAdministrar);
         PanelAdministrar.setLayout(PanelAdministrarLayout);
@@ -163,7 +181,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addComponent(BotonRegistrarCurso)
                 .addGap(10, 10, 10)
                 .addComponent(BotonRegistrarUsuarios)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         PanelAdministrarLayout.setVerticalGroup(
             PanelAdministrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,6 +318,24 @@ public class FramePrincipal extends javax.swing.JFrame {
         ventanaBasica = new VentanaBasica(new PFacultad());
         FramePrincipal.getSingleton().AddVentana(ventanaBasica);
     }//GEN-LAST:event_BotonRegistrarFacultadActionPerformed
+
+    private void BotonRegistrarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarEstudianteActionPerformed
+        VentanaBasica ventanaBasica;
+        ventanaBasica = new VentanaBasica(new PEstudiantes());
+        FramePrincipal.getSingleton().AddVentana(ventanaBasica);
+    }//GEN-LAST:event_BotonRegistrarEstudianteActionPerformed
+
+    private void BotonRegistrarCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarCursoActionPerformed
+         VentanaBasica ventanaBasica;
+        ventanaBasica = new VentanaBasica(new PCursos());
+        FramePrincipal.getSingleton().AddVentana(ventanaBasica);
+    }//GEN-LAST:event_BotonRegistrarCursoActionPerformed
+
+    private void BotonRegistrarUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarUsuariosActionPerformed
+        VentanaBasica ventanaBasica;
+        ventanaBasica = new VentanaBasica(new PHorario());
+        FramePrincipal.getSingleton().AddVentana(ventanaBasica);
+    }//GEN-LAST:event_BotonRegistrarUsuariosActionPerformed
 
     private static FramePrincipal framePrincipal = null;
     
