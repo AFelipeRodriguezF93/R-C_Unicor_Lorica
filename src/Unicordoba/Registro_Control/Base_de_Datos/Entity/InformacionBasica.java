@@ -61,7 +61,7 @@ public class InformacionBasica implements Serializable {
     private int tiCc;
     @Basic(optional = false)
     @Column(name = "Telefono")
-    private int telefono;
+    private String telefono;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "informacionBasicaId")
     private List<Estudiante> estudianteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "informacionBasicaId")
@@ -76,7 +76,7 @@ public class InformacionBasica implements Serializable {
         this.id = id;
     }
 
-    public InformacionBasica(Integer id, String nombres, String apellidos, String codigo, String correo, int tiCc, int telefono) {
+    public InformacionBasica(Integer id, String nombres, String apellidos, String codigo, String correo, int tiCc, String telefono) {
         this.id = id;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -134,11 +134,11 @@ public class InformacionBasica implements Serializable {
         this.tiCc = tiCc;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

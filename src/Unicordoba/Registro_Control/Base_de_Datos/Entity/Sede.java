@@ -165,7 +165,7 @@ public class Sede implements Serializable {
 
     @Override
     public String toString() {
-        return nombre;
+        return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Sede[ id=" + id + " ]";
     }
     
 }

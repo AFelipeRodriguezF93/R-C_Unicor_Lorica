@@ -267,7 +267,7 @@ public class PDocente extends javax.swing.JPanel implements IPanelEdicion {
             informacionBasica.setApellidos(TFieldApellidos.getText());
             informacionBasica.setCodigo(TFieldCodigo.getText());
             informacionBasica.setCorreo(TFieldCorreo.getText());
-            informacionBasica.setTelefono(Integer.valueOf(TFieldTelefono.getText()));
+            informacionBasica.setTelefono(TFieldTelefono.getText());
             informacionBasica.setTiCc(Integer.valueOf(TFieldIdentificacion.getText()));
             InformacionBasicaJpaController informacionBasicaJpaController = new InformacionBasicaJpaController(entityManagerFactory);
             if (estado_Ventana.equals(Estado_Ventana.NUEVO)) {
