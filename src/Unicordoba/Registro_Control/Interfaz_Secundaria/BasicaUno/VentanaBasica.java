@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Unicordoba.Registro_Control.Interfaz_Secundaria.Basica;
+package Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno;
 
 import java.awt.Component;
 import javax.swing.JLabel;
@@ -292,7 +292,7 @@ public class VentanaBasica<T> extends javax.swing.JInternalFrame {
                         ((JTextField) component).setText("");
                     }
                     if (component instanceof JLabel) {
-                        ((JTextField) component).setText("");
+                       // ((JTextField) component).setText("");
                     }
                     component.setEnabled(true);
                 }

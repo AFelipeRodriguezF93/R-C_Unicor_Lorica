@@ -6,51 +6,48 @@
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Facultad;
 
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.FacultadJpaController;
+import Unicordoba.Registro_Control.Base_de_Datos.Controlador.UniversidadJpaController;
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.IllegalOrphanException;
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.NonexistentEntityException;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Universidad;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.Estado_Ventana;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno.Estado_Ventana;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno.IPanelEdicion;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 /**
  *
  * @author AndresFelipe
  */
 public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
-
-    private EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
-    Facultad facultad = new Facultad();
-    
+   
     /**
      * Creates new form Facultad
      */
     public PFacultad() {
         initComponents();
-        CarcarCBUniversidades();        
+        CarcarCBUniversidades();  
+        EstadoCampos();
     }
     
-    public void CarcarCBUniversidades(){
-        
+    public void CarcarCBUniversidades(){        
         entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
-        entityManager = entityManagerFactory.createEntityManager();
-        Query query = entityManager.createNamedQuery("Universidad.findAll");
-        
-        //Iterator iterator = entityManager.createNamedQuery("Universidad.findAll").getResultList().iterator();
-        //while (query.){
-        //    this.CBUniversidad.addItem(((Universidad)iterator.next()));
-        //}
+        List<Universidad> list = new UniversidadJpaController(entityManagerFactory).findUniversidadEntities();
+        for (Universidad list1 : list) {
+            CBUniversidad.addItem(list1);
+        }
+    }
+    
+    public void EstadoCampos(){
+        TFieldNombreFacultad.setEnabled(false);
+        CBUniversidad.setEnabled(false);
+        TFieldNombreDecano.setEnabled(false);
+        TFieldUbicacion.setEnabled(false);
     }
  
     /**
@@ -61,7 +58,6 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         LNombreFacultad = new javax.swing.JLabel();
         LNombreDecano = new javax.swing.JLabel();
@@ -72,75 +68,62 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
         LUniversidad = new javax.swing.JLabel();
         CBUniversidad = new javax.swing.JComboBox();
 
-        setLayout(new java.awt.GridBagLayout());
-
         LNombreFacultad.setText("Nombre de la Facultad:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 0);
-        add(LNombreFacultad, gridBagConstraints);
 
         LNombreDecano.setText("Nombre del Decano:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
-        add(LNombreDecano, gridBagConstraints);
 
         LUbicacion.setText("Ubicación:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 0);
-        add(LUbicacion, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 255;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(17, 10, 0, 10);
-        add(TFieldNombreFacultad, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 255;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 10);
-        add(TFieldNombreDecano, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 255;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 10, 23, 10);
-        add(TFieldUbicacion, gridBagConstraints);
 
         LUniversidad.setText("Universidad:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 10, 0, 0);
-        add(LUniversidad, gridBagConstraints);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 233;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(21, 10, 0, 10);
-        add(CBUniversidad, gridBagConstraints);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LUniversidad)
+                    .addComponent(LNombreFacultad)
+                    .addComponent(LNombreDecano)
+                    .addComponent(LUbicacion))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TFieldUbicacion)
+                    .addComponent(TFieldNombreDecano)
+                    .addComponent(TFieldNombreFacultad)
+                    .addComponent(CBUniversidad, 0, 261, Short.MAX_VALUE))
+                .addGap(9, 9, 9))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LNombreFacultad))
+                    .addComponent(TFieldNombreFacultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LUniversidad))
+                    .addComponent(CBUniversidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LNombreDecano))
+                    .addComponent(TFieldNombreDecano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(LUbicacion))
+                    .addComponent(TFieldUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -155,16 +138,20 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
     private javax.swing.JTextField TFieldUbicacion;
     // End of variables declaration//GEN-END:variables
 
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
+    private Facultad facultad = null;
+    
     @Override
     public void Guardar(Estado_Ventana estado_Ventana ) {
         try {
             entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
-            FacultadJpaController facultadJpaController = new FacultadJpaController(entityManagerFactory);
+            
             facultad.setNombre(TFieldNombreFacultad.getText());
             facultad.setUniversidadid((Universidad) CBUniversidad.getSelectedItem());
             facultad.setDecano(TFieldNombreDecano.getText());
             facultad.setUbicacion(TFieldUbicacion.getText());          
-                        
+            FacultadJpaController facultadJpaController = new FacultadJpaController(entityManagerFactory);
             if (estado_Ventana.equals(Estado_Ventana.NUEVO)) {
                 facultadJpaController.create(facultad);
             } else {
@@ -180,13 +167,13 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
     public void Eliminar() {
         try {
             entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
-            FacultadJpaController facultadJpaController =new FacultadJpaController(entityManagerFactory);
-            //facultad.setId(facultad.getId());
-            facultadJpaController.destroy(facultad.getId());            
+            FacultadJpaController facultadJpaController = new  FacultadJpaController(entityManagerFactory);
+            facultadJpaController.destroy(facultad.getId());          
+
         } catch (NonexistentEntityException ex) {
             ex.printStackTrace();
         } catch (IllegalOrphanException ex) {
-            Logger.getLogger(PFacultad.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
     }
 
@@ -202,13 +189,14 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public void Seleccionar(Vector vectorSeleccion) {
-        /*entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
+        entityManagerFactory = Persistence.createEntityManagerFactory("R-C_Unicor_LoricaPU");
         FacultadJpaController facultadJpaController = new FacultadJpaController(entityManagerFactory);
-        facultad = facultadJpaController.findFacultad(Integer.valueOf(vectorSeleccion.get(0).toString()));
-        CBUniversidad.setSelectedItem(facultad.getUniversidadid());
+        
+        this.facultad = facultadJpaController.findFacultad(Integer.valueOf(vectorSeleccion.get(0).toString()));
         TFieldNombreFacultad.setText(facultad.getNombre());
+        CBUniversidad.setSelectedItem(facultad.getUniversidadid().getNombre());
         TFieldNombreDecano.setText(facultad.getDecano());
-        TFieldUbicacion.setText(facultad.getUbicacion());   */  
+        TFieldUbicacion.setText(facultad.getUbicacion());        
     }
 
     @Override
@@ -219,6 +207,7 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
         List<Object[]> list = new ArrayList();
         for (Facultad facultad : facultadJpaController.findFacultadEntities()) {
             list.add(new Object[]{
+                facultad.getId(),
                 facultad.getUniversidadid().getNombre(),
                 facultad.getNombre(), 
                 facultad.getDecano(),
@@ -230,6 +219,6 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
 
     @Override
     public String[] getNombreDeColumnas() {
-        return new String[]{"Universidad", "Nombre","Decano","Ubicacion"};
+        return new String[]{"ID", "Universidad", "Nombre","Decano","Ubicacion"};
     }  
 }

@@ -35,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Facultad.findById", query = "SELECT f FROM Facultad f WHERE f.id = :id"),
     @NamedQuery(name = "Facultad.findByNombre", query = "SELECT f FROM Facultad f WHERE f.nombre = :nombre"),
     @NamedQuery(name = "Facultad.findByDecano", query = "SELECT f FROM Facultad f WHERE f.decano = :decano"),
-    @NamedQuery(name = "Facultad.findByUbicacion", query = "SELECT f FROM Facultad f WHERE f.ubicacion = :ubicacion")})
+    @NamedQuery(name = "Facultad.findByUbicacion", query = "SELECT f FROM Facultad f WHERE f.ubicacion = :ubicacion"),
+    @NamedQuery(name = "Facultad.findByCodigo", query = "SELECT f FROM Facultad f WHERE f.codigo = :codigo")})
 public class Facultad implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -52,6 +53,8 @@ public class Facultad implements Serializable {
     @Basic(optional = false)
     @Column(name = "Ubicacion")
     private String ubicacion;
+    @Column(name = "Codigo")
+    private Integer codigo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "facultadid")
     private List<Docente> docenteList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "facultadid")
@@ -106,6 +109,14 @@ public class Facultad implements Serializable {
         this.ubicacion = ubicacion;
     }
 
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
+    }
+
     @XmlTransient
     public List<Docente> getDocenteList() {
         return docenteList;
@@ -154,7 +165,7 @@ public class Facultad implements Serializable {
 
     @Override
     public String toString() {
-        return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad[ id=" + id + " ]";
+        return nombre;
     }
     
 }

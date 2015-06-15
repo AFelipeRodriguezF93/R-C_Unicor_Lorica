@@ -5,18 +5,13 @@
  */
 package Unicordoba.Registro_Control.Interfaz_Principal;
 
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.VentanaBasica;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaDos.VentanaIniciarSesion;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno.VentanaBasica;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Docente.PDocente;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Facultad.PFacultad;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Materia.PMateria;
 import Unicordoba.Registro_Control.Interfaz_Secundaria.Programa.PPrograma;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,6 +36,8 @@ public class FramePrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         TabPrincipal = new javax.swing.JTabbedPane();
+        PanelControlAsistencia = new javax.swing.JPanel();
+        BotonNuevaConexion = new javax.swing.JButton();
         PanelAdministrar = new javax.swing.JPanel();
         BotonRegistrarFacultad = new javax.swing.JButton();
         BotonRegistrarPrograma = new javax.swing.JButton();
@@ -49,8 +46,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         BotonRegistrarEstudiante = new javax.swing.JButton();
         BotonRegistrarCurso = new javax.swing.JButton();
         BotonRegistrarUsuarios = new javax.swing.JButton();
-        PanelConexion = new javax.swing.JPanel();
-        BotonNuevaConexion = new javax.swing.JButton();
         PanelReportes = new javax.swing.JPanel();
         BotonReportesGeneral = new javax.swing.JButton();
         ReportesProgramas = new javax.swing.JButton();
@@ -60,10 +55,43 @@ public class FramePrincipal extends javax.swing.JFrame {
         MenuEdit = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+
+        BotonNuevaConexion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Check-Asistencia-O.png"))); // NOI18N
+        BotonNuevaConexion.setText("Asistencia");
+        BotonNuevaConexion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BotonNuevaConexion.setMaximumSize(new java.awt.Dimension(100, 77));
+        BotonNuevaConexion.setMinimumSize(new java.awt.Dimension(100, 77));
+        BotonNuevaConexion.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+
+        javax.swing.GroupLayout PanelControlAsistenciaLayout = new javax.swing.GroupLayout(PanelControlAsistencia);
+        PanelControlAsistencia.setLayout(PanelControlAsistenciaLayout);
+        PanelControlAsistenciaLayout.setHorizontalGroup(
+            PanelControlAsistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelControlAsistenciaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BotonNuevaConexion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(800, Short.MAX_VALUE))
+        );
+        PanelControlAsistenciaLayout.setVerticalGroup(
+            PanelControlAsistenciaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelControlAsistenciaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BotonNuevaConexion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        TabPrincipal.addTab("Control de Asistencia", PanelControlAsistencia);
 
         BotonRegistrarFacultad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Facultad-O.png"))); // NOI18N
         BotonRegistrarFacultad.setText("Reg. Facultad");
         BotonRegistrarFacultad.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        BotonRegistrarFacultad.setMaximumSize(new java.awt.Dimension(100, 77));
+        BotonRegistrarFacultad.setMinimumSize(new java.awt.Dimension(100, 77));
         BotonRegistrarFacultad.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         BotonRegistrarFacultad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,7 +150,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             PanelAdministrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelAdministrarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BotonRegistrarFacultad)
+                .addComponent(BotonRegistrarFacultad, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonRegistrarPrograma)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -135,7 +163,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addComponent(BotonRegistrarCurso)
                 .addGap(10, 10, 10)
                 .addComponent(BotonRegistrarUsuarios)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(137, Short.MAX_VALUE))
         );
         PanelAdministrarLayout.setVerticalGroup(
             PanelAdministrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,27 +181,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         );
 
         TabPrincipal.addTab("Administrar Sistema", PanelAdministrar);
-
-        BotonNuevaConexion.setText("Asistencia");
-
-        javax.swing.GroupLayout PanelConexionLayout = new javax.swing.GroupLayout(PanelConexion);
-        PanelConexion.setLayout(PanelConexionLayout);
-        PanelConexionLayout.setHorizontalGroup(
-            PanelConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelConexionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BotonNuevaConexion)
-                .addContainerGap(746, Short.MAX_VALUE))
-        );
-        PanelConexionLayout.setVerticalGroup(
-            PanelConexionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelConexionLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(BotonNuevaConexion)
-                .addContainerGap(48, Short.MAX_VALUE))
-        );
-
-        TabPrincipal.addTab("Control de Asistencia", PanelConexion);
 
         BotonReportesGeneral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Unicordoba/Registro_Control/Imagenes/Reportes-III-O.png"))); // NOI18N
         BotonReportesGeneral.setText("Reporte General");
@@ -204,7 +211,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addComponent(BotonReportesGeneral)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ReportesProgramas)
-                .addContainerGap(565, Short.MAX_VALUE))
+                .addContainerGap(638, Short.MAX_VALUE))
         );
         PanelReportesLayout.setVerticalGroup(
             PanelReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -255,25 +262,26 @@ public class FramePrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonReportesGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReportesGeneralActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotonReportesGeneralActionPerformed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        /*TabPrincipal.setVisible(false);
+        VentanaIniciarSesion ventanaIniciarSesion;
+        ventanaIniciarSesion = new VentanaIniciarSesion();
+        FramePrincipal.getSingleton().AddVentana(ventanaIniciarSesion);*/
+    }//GEN-LAST:event_formWindowOpened
 
     private void ReportesProgramasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportesProgramasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ReportesProgramasActionPerformed
 
-    private void BotonRegistrarFacultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarFacultadActionPerformed
-        VentanaBasica ventanaBasica;
-        ventanaBasica = new VentanaBasica(new PFacultad());
-        FramePrincipal.getSingleton().AddVentana(ventanaBasica);        
-    }//GEN-LAST:event_BotonRegistrarFacultadActionPerformed
+    private void BotonReportesGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReportesGeneralActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonReportesGeneralActionPerformed
 
-    private void BotonRegistrarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarProgramaActionPerformed
+    private void BotonRegistrarDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarDocenteActionPerformed
         VentanaBasica ventanaBasica;
-        ventanaBasica = new VentanaBasica(new PPrograma());
+        ventanaBasica = new VentanaBasica(new PDocente());
         FramePrincipal.getSingleton().AddVentana(ventanaBasica);
-    }//GEN-LAST:event_BotonRegistrarProgramaActionPerformed
+    }//GEN-LAST:event_BotonRegistrarDocenteActionPerformed
 
     private void BotonRegistrarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarMateriaActionPerformed
         VentanaBasica ventanaBasica;
@@ -281,11 +289,17 @@ public class FramePrincipal extends javax.swing.JFrame {
         FramePrincipal.getSingleton().AddVentana(ventanaBasica);
     }//GEN-LAST:event_BotonRegistrarMateriaActionPerformed
 
-    private void BotonRegistrarDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarDocenteActionPerformed
+    private void BotonRegistrarProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarProgramaActionPerformed
         VentanaBasica ventanaBasica;
-        ventanaBasica = new VentanaBasica(new PDocente());
+        ventanaBasica = new VentanaBasica(new PPrograma());
         FramePrincipal.getSingleton().AddVentana(ventanaBasica);
-    }//GEN-LAST:event_BotonRegistrarDocenteActionPerformed
+    }//GEN-LAST:event_BotonRegistrarProgramaActionPerformed
+
+    private void BotonRegistrarFacultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRegistrarFacultadActionPerformed
+        VentanaBasica ventanaBasica;
+        ventanaBasica = new VentanaBasica(new PFacultad());
+        FramePrincipal.getSingleton().AddVentana(ventanaBasica);
+    }//GEN-LAST:event_BotonRegistrarFacultadActionPerformed
 
     private static FramePrincipal framePrincipal = null;
     
@@ -352,9 +366,9 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu MenuEdit;
     private javax.swing.JMenu MenuFile;
     private javax.swing.JPanel PanelAdministrar;
-    private javax.swing.JPanel PanelConexion;
+    private javax.swing.JPanel PanelControlAsistencia;
     private javax.swing.JPanel PanelReportes;
     private javax.swing.JButton ReportesProgramas;
-    private javax.swing.JTabbedPane TabPrincipal;
+    public javax.swing.JTabbedPane TabPrincipal;
     // End of variables declaration//GEN-END:variables
 }
