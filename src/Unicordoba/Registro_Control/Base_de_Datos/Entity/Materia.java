@@ -35,10 +35,10 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Materia.findAll", query = "SELECT m FROM Materia m"),
     @NamedQuery(name = "Materia.findById", query = "SELECT m FROM Materia m WHERE m.id = :id"),
     @NamedQuery(name = "Materia.findByNombre", query = "SELECT m FROM Materia m WHERE m.nombre = :nombre"),
-    @NamedQuery(name = "Materia.findBySemestre", query = "SELECT m FROM Materia m WHERE m.semestre = :semestre"),
     @NamedQuery(name = "Materia.findByContenido", query = "SELECT m FROM Materia m WHERE m.contenido = :contenido"),
     @NamedQuery(name = "Materia.findByCreditos", query = "SELECT m FROM Materia m WHERE m.creditos = :creditos"),
-    @NamedQuery(name = "Materia.findByCodigo", query = "SELECT m FROM Materia m WHERE m.codigo = :codigo")})
+    @NamedQuery(name = "Materia.findByCodigo", query = "SELECT m FROM Materia m WHERE m.codigo = :codigo"),
+    @NamedQuery(name = "Materia.findBySemestre", query = "SELECT m FROM Materia m WHERE m.semestre = :semestre")})
 public class Materia implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,15 +48,14 @@ public class Materia implements Serializable {
     private Integer id;
     @Column(name = "Nombre")
     private String nombre;
-    @Column(name = "Semestre")
-    private Integer semestre;
     @Column(name = "Contenido")
     private String contenido;
     @Column(name = "Creditos")
     private Integer creditos;
-    @Basic(optional = false)
     @Column(name = "Codigo")
-    private int codigo;
+    private Integer codigo;
+    @Column(name = "Semestre")
+    private String semestre;
     @ManyToMany(mappedBy = "materiaList")
     private List<Docente> docenteList;
     @JoinTable(name = "materia_has_curso", joinColumns = {
@@ -76,11 +75,6 @@ public class Materia implements Serializable {
         this.id = id;
     }
 
-    public Materia(Integer id, int codigo) {
-        this.id = id;
-        this.codigo = codigo;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -95,14 +89,6 @@ public class Materia implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Integer getSemestre() {
-        return semestre;
-    }
-
-    public void setSemestre(Integer semestre) {
-        this.semestre = semestre;
     }
 
     public String getContenido() {
@@ -121,12 +107,20 @@ public class Materia implements Serializable {
         this.creditos = creditos;
     }
 
-    public int getCodigo() {
+    public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(int codigo) {
+    public void setCodigo(Integer codigo) {
         this.codigo = codigo;
+    }
+
+    public String getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(String semestre) {
+        this.semestre = semestre;
     }
 
     @XmlTransient
@@ -187,7 +181,7 @@ public class Materia implements Serializable {
 
     @Override
     public String toString() {
-        return "Unicordoba.Registro_Control.Base_de_Datos.Entity.Materia[ id=" + id + " ]";
+        return nombre;
     }
     
 }

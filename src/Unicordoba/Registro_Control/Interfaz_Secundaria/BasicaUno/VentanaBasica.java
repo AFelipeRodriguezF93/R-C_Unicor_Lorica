@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Unicordoba.Registro_Control.Interfaz_Secundaria.Basica;
+package Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno;
 
 import java.awt.Component;
 import javax.swing.JLabel;

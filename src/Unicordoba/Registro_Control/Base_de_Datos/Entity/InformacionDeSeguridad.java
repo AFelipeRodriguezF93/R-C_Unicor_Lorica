@@ -47,6 +47,7 @@ public class InformacionDeSeguridad implements Serializable {
     @Basic(optional = false)
     @Column(name = "Clave")
     private String clave;
+    @Basic(optional = false)
     @Column(name = "Estado")
     private String estado;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "informacionDeSeguridadidI")
@@ -63,10 +64,11 @@ public class InformacionDeSeguridad implements Serializable {
         this.idI = idI;
     }
 
-    public InformacionDeSeguridad(Integer idI, String codigoHuella, String clave) {
+    public InformacionDeSeguridad(Integer idI, String codigoHuella, String clave, String estado) {
         this.idI = idI;
         this.codigoHuella = codigoHuella;
         this.clave = clave;
+        this.estado = estado;
     }
 
     public Integer getIdI() {

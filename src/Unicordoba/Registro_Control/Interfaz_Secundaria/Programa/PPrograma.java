@@ -11,15 +11,11 @@ import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.IllegalO
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.NonexistentEntityException;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Programa;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.Estado_Ventana;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Facultad.PFacultad;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno.Estado_Ventana;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno.IPanelEdicion;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -36,6 +32,7 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
     public PPrograma() {
         initComponents();
         CarcarCBUniversidades();
+        EstadoCampos();
     }
     
     public void CarcarCBUniversidades(){        
@@ -46,6 +43,13 @@ public class PPrograma extends javax.swing.JPanel implements IPanelEdicion {
         }
     }
 
+    public void EstadoCampos(){
+        TFieldNombrePrograma.setEnabled(false);
+        TFieldCodigo.setEnabled(false);
+        CBFacultades.setEnabled(false);
+        TFieldNomJefePrograma.setEnabled(false);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

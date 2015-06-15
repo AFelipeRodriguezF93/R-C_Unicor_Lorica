@@ -6,7 +6,6 @@
 package Unicordoba.Registro_Control.Interfaz_Secundaria.Docente;
 
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.DocenteJpaController;
-import Unicordoba.Registro_Control.Base_de_Datos.Controlador.EstudianteJpaController;
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.FacultadJpaController;
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.InformacionBasicaJpaController;
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.InformacionDeSeguridadJpaController;
@@ -16,8 +15,8 @@ import Unicordoba.Registro_Control.Base_de_Datos.Entity.Docente;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.InformacionBasica;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.InformacionDeSeguridad;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.Estado_Ventana;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno.Estado_Ventana;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno.IPanelEdicion;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -37,6 +36,7 @@ public class PDocente extends javax.swing.JPanel implements IPanelEdicion {
     public PDocente() {
         initComponents();
         CargarFacultadesCB();
+        EstadoCampos();
     }
 
     private void CargarFacultadesCB() {
@@ -45,6 +45,18 @@ public class PDocente extends javax.swing.JPanel implements IPanelEdicion {
         for (Facultad list1 : list) {
             CBFacultad.addItem(list1);
         }
+    }
+    
+    private void EstadoCampos(){
+        CBFacultad.setEnabled(false);
+        TFieldNombre.setEnabled(false);
+        TFieldApellidos.setEnabled(false);
+        TFieldIdentificacion.setEnabled(false);
+        TFieldCodigo.setEnabled(false);
+        TFieldCorreo.setEnabled(false);
+        TFieldTelefono.setEnabled(false);
+        TFieldClave.setEnabled(false);
+        CBEstado.setEnabled(false);
     }
     
     /**
@@ -133,8 +145,8 @@ public class PDocente extends javax.swing.JPanel implements IPanelEdicion {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LFacultdad)
                     .addComponent(LNombre)
@@ -165,56 +177,52 @@ public class PDocente extends javax.swing.JPanel implements IPanelEdicion {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TFieldClave)
                     .addComponent(CBEstado, 0, 199, Short.MAX_VALUE))
-                .addGap(10, 10, 10))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(LFacultdad)
-                        .addGap(24, 24, 24)
-                        .addComponent(LNombre)
-                        .addGap(24, 24, 24)
-                        .addComponent(LApellidos)
-                        .addGap(28, 28, 28)
-                        .addComponent(LIdentificacion)
-                        .addGap(24, 24, 24)
-                        .addComponent(LCodigo)
-                        .addGap(24, 24, 24)
-                        .addComponent(LCorreo)
-                        .addGap(24, 24, 24)
-                        .addComponent(LTelefono))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(CBFacultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CBFacultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LFacultdad))
                         .addGap(18, 18, 18)
-                        .addComponent(TFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LNombre))
                         .addGap(18, 18, 18)
-                        .addComponent(TFieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TFieldApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LApellidos))
                         .addGap(22, 22, 22)
-                        .addComponent(TFieldIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TFieldIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LIdentificacion))
                         .addGap(18, 18, 18)
-                        .addComponent(TFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TFieldCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LCodigo))
                         .addGap(18, 18, 18)
-                        .addComponent(TFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TFieldCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LCorreo))
                         .addGap(18, 18, 18)
-                        .addComponent(TFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LTelefono)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(PanelLectorHuella, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
+                        .addGap(3, 3, 3)
                         .addComponent(LClaveAcceso)
                         .addGap(24, 24, 24)
                         .addComponent(LEstado))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
                         .addComponent(TFieldClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(CBEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                        .addComponent(CBEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PanelLectorHuella, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 11, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -272,7 +280,6 @@ public class PDocente extends javax.swing.JPanel implements IPanelEdicion {
             informacionDeSeguridad.setCodigoHuella(LCodigoHuella.getText());
             informacionDeSeguridad.setEstado(CBEstado.getSelectedItem().toString());
             InformacionDeSeguridadJpaController informacionDeSeguridadJpaController = new InformacionDeSeguridadJpaController(entityManagerFactory);
-            informacionDeSeguridadJpaController.create(informacionDeSeguridad);
             if (estado_Ventana.equals(Estado_Ventana.NUEVO)) {
                 informacionDeSeguridadJpaController.create(informacionDeSeguridad);
             } else {
@@ -304,7 +311,7 @@ public class PDocente extends javax.swing.JPanel implements IPanelEdicion {
             informacionBasicaJpaController.destroy(docente.getInformacionBasicaId().getId());
 
             InformacionDeSeguridadJpaController informacionDeSeguridadJpaController = new InformacionDeSeguridadJpaController(entityManagerFactory);
-            informacionBasicaJpaController.destroy(docente.getInformacionDeSeguridadidI().getIdI());
+            informacionDeSeguridadJpaController.destroy(docente.getInformacionDeSeguridadidI().getIdI());
 
         } catch (NonexistentEntityException ex) {
             ex.printStackTrace();

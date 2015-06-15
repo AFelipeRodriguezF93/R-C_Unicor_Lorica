@@ -11,10 +11,9 @@ import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.IllegalO
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.NonexistentEntityException;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Materia;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Programa;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.Estado_Ventana;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno.Estado_Ventana;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno.IPanelEdicion;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 import javax.persistence.EntityManager;
@@ -33,6 +32,7 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
     public PMateria() {
         initComponents();
         CarcarCBUniversidades();
+        EstadoCampos();
     }
     
     public void CarcarCBUniversidades(){        
@@ -41,6 +41,15 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
         for (Programa list1 : list) {
             CBListaProgramas.addItem(list1);
         }
+    }
+    
+    public void EstadoCampos(){
+        TFieldNombreMateria.setEnabled(false);
+        TFieldCodigo.setEnabled(false);
+        CBSemestre.setEnabled(false);
+        CBListaProgramas.setEnabled(false);
+        TAreaContenido.setEnabled(false);
+        CBCantidadCreditos.setEnabled(false);
     }
 
     /**
@@ -83,9 +92,10 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
         ScrollPanelContenido.setViewportView(TAreaContenido);
 
         CBSemestre.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Primer Semestre", "Segundo Semestre", "Tercer Semestre", "Cuarto Semestre", "Quinto Semestre", "Sexto Semestre", "Septimo Semestre", "Octavo Semestre", "Noveno Semestre", "Decimo Semestre" }));
-        CBSemestre.setSelectedIndex(1);
+        CBSemestre.setToolTipText("");
 
         CBCantidadCreditos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6" }));
+        CBCantidadCreditos.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -188,7 +198,7 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
             
             materia.setNombre(TFieldNombreMateria.getText());
             materia.setCodigo(Integer.valueOf(TFieldCodigo.getText())); 
-            materia.setSemestre(Integer.valueOf(CBSemestre.getSelectedIndex()));
+            materia.setSemestre(CBSemestre.getSelectedItem().toString());
             materia.setContenido(TAreaContenido.getText());
             materia.setCreditos(Integer.valueOf(CBCantidadCreditos.getSelectedItem().toString()));
             MateriaJpaController materiaJpaController = new MateriaJpaController(entityManagerFactory);
@@ -240,7 +250,7 @@ public class PMateria extends javax.swing.JPanel implements IPanelEdicion {
         TFieldCodigo.setText(materia.getCodigo()+"");
         CBSemestre.setSelectedItem(materia.getSemestre());
         TAreaContenido.setText(materia.getContenido());
-        CBCantidadCreditos.setSelectedItem(materia.getCreditos());
+        CBCantidadCreditos.setSelectedItem(materia.getCreditos()+"");
     }
 
     @Override

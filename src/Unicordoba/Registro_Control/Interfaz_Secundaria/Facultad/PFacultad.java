@@ -11,18 +11,14 @@ import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.IllegalO
 import Unicordoba.Registro_Control.Base_de_Datos.Controlador.exceptions.NonexistentEntityException;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Facultad;
 import Unicordoba.Registro_Control.Base_de_Datos.Entity.Universidad;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.Estado_Ventana;
-import Unicordoba.Registro_Control.Interfaz_Secundaria.Basica.IPanelEdicion;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno.Estado_Ventana;
+import Unicordoba.Registro_Control.Interfaz_Secundaria.BasicaUno.IPanelEdicion;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 /**
  *
@@ -35,7 +31,8 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
      */
     public PFacultad() {
         initComponents();
-        CarcarCBUniversidades();        
+        CarcarCBUniversidades();  
+        EstadoCampos();
     }
     
     public void CarcarCBUniversidades(){        
@@ -44,6 +41,13 @@ public class PFacultad extends javax.swing.JPanel implements IPanelEdicion {
         for (Universidad list1 : list) {
             CBUniversidad.addItem(list1);
         }
+    }
+    
+    public void EstadoCampos(){
+        TFieldNombreFacultad.setEnabled(false);
+        CBUniversidad.setEnabled(false);
+        TFieldNombreDecano.setEnabled(false);
+        TFieldUbicacion.setEnabled(false);
     }
  
     /**
